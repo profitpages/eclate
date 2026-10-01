@@ -727,6 +727,7 @@ rail-slider { display: block; }
   .cart-recs--page .mini-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 749px) {
+  .link-underline { min-height: 36px; } /* comfortable tap target for inline text links */
   :root { --section-space: 56px; }
   .announce { font-size: .66rem; letter-spacing: .08em; }
   .announce__inner { gap: 4px; padding-inline: 8px; }
