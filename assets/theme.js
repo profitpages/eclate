@@ -601,6 +601,218 @@
     });
   }
 
+  /* ---------- Slideshow ---------- */
+  class SlideShow extends HTMLElement {
+    connectedCallback() {
+      this.slides = $$('[data-slide]', this);
+      this.dots = $$('[data-dot]', this);
+      this.index = 0;
+      if (this.slides.length < 2) return;
+      this.go(0);
+      $('[data-prev]', this)?.addEventListener('click', () => this.go(this.index - 1, true));
+      $('[data-next]', this)?.addEventListener('click', () => this.go(this.index + 1, true));
+      this.dots.forEach((d) => d.addEventListener('click', () => this.go(Number(d.dataset.dot), true)));
+      this.pauseBtn = $('[data-pause]', this);
+      this.pauseBtn?.addEventListener('click', () => this.setPaused(!this.classList.contains('is-paused'), true));
+      this.addEventListener('keydown', (e) => {
+        if (e.target.closest('input, textarea, select')) return;
+        if (e.key === 'ArrowRight') this.go(this.index + 1, true);
+        if (e.key === 'ArrowLeft') this.go(this.index - 1, true);
+      });
+      let x0 = null;
+      this.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+      this.addEventListener('touchend', (e) => {
+        if (x0 === null) return;
+        const dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 50) this.go(this.index + (dx < 0 ? 1 : -1), true);
+        x0 = null;
+      });
+      // Pause while hovered / focused inside (WCAG 2.2.2)
+      this.addEventListener('mouseenter', () => (this.hovering = true));
+      this.addEventListener('mouseleave', () => (this.hovering = false));
+      this.addEventListener('focusin', () => (this.hovering = true));
+      this.addEventListener('focusout', () => (this.hovering = false));
+      if (this.dataset.autoplay === 'true' && !reduceMotion) this.start();
+      else this.setPaused(true);
+    }
+    disconnectedCallback() { clearInterval(this.timer); }
+    start() {
+      clearInterval(this.timer);
+      this.timer = setInterval(() => { if (!this.hovering && !this.classList.contains('is-paused')) this.go(this.index + 1); }, Number(this.dataset.interval) || 6000);
+    }
+    setPaused(paused, user) {
+      this.classList.toggle('is-paused', paused);
+      if (this.pauseBtn) this.pauseBtn.setAttribute('aria-label', paused ? this.pauseBtn.dataset.labelPlay : this.pauseBtn.dataset.labelPause);
+      if (!paused && user) this.start();
+    }
+    go(i, user) {
+      const n = this.slides.length;
+      this.index = (i + n) % n;
+      this.slides.forEach((s, k) => {
+        const on = k === this.index;
+        s.classList.toggle('is-active', on);
+        s.setAttribute('aria-hidden', String(!on));
+        $$('a, button', s).forEach((el) => (on ? el.removeAttribute('tabindex') : el.setAttribute('tabindex', '-1')));
+      });
+      this.dots.forEach((d, k) => {
+        d.classList.toggle('is-active', k === this.index);
+        if (k === this.index) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
+      });
+      if (user && this.dataset.autoplay === 'true') this.start();
+    }
+    goToBlock(el) { const i = this.slides.indexOf(el); if (i > -1) { this.setPaused(true); this.go(i); } }
+  }
+  define('slide-show', SlideShow);
+
+  /* ---------- Deferred media (click-to-load video) ---------- */
+  class DeferredMedia extends HTMLElement {
+    connectedCallback() { $('[data-play]', this)?.addEventListener('click', () => this.load()); }
+    load() {
+      if (this.classList.contains('is-loaded')) return;
+      const tpl = $('template', this);
+      const screen = $('.vframe__screen', this) || this;
+      if (!tpl || !tpl.content.firstElementChild) return;
+      screen.appendChild(tpl.content.cloneNode(true));
+      this.classList.add('is-loaded');
+      const v = $('video', screen);
+      if (v) { v.play().catch(() => {}); v.focus(); }
+    }
+  }
+  define('deferred-media', DeferredMedia);
+
+  /* ---------- Countdown ---------- */
+  class CountdownTimer extends HTMLElement {
+    connectedCallback() {
+      const tz = (this.dataset.tz || '+0000').replace(/^([+-]\d{2})(\d{2})$/, '$1:$2');
+      this.end = new Date(`${this.dataset.end}${tz}`).getTime();
+      this.nums = {};
+      $$('[data-unit]', this).forEach((n) => (this.nums[n.dataset.unit] = n));
+      if (Number.isNaN(this.end)) return;
+      this.tick();
+      this.timer = setInterval(() => this.tick(), 1000);
+    }
+    disconnectedCallback() { clearInterval(this.timer); }
+    tick() {
+      let diff = Math.max(0, this.end - Date.now());
+      if (diff <= 0) {
+        clearInterval(this.timer);
+        if (this.dataset.expired === 'hide' && !window.Shopify?.designMode) { this.hidden = true; return; }
+        const clock = $('[data-clock]', this); if (clock) clock.hidden = true;
+        const msg = $('[data-expired-msg]', this); if (msg) msg.hidden = false;
+        return;
+      }
+      const d = Math.floor(diff / 864e5); diff -= d * 864e5;
+      const h = Math.floor(diff / 36e5); diff -= h * 36e5;
+      const m = Math.floor(diff / 6e4); diff -= m * 6e4;
+      const vals = { days: d, hours: h, minutes: m, seconds: Math.floor(diff / 1e3) };
+      Object.keys(vals).forEach((k) => { if (this.nums[k]) this.nums[k].textContent = String(vals[k]).padStart(2, '0'); });
+    }
+  }
+  define('countdown-timer', CountdownTimer);
+
+  /* ---------- Skin quiz ("Find your ritual") ---------- */
+  class GiftFinder extends HTMLElement {
+    connectedCallback() {
+      this.steps = $$('[data-step]', this);
+      this.dots = $$('[data-progress]', this);
+      this.done = $('[data-done]', this);
+      this.link = $('[data-results-link]', this);
+      this.answers = [];
+      this.step = 0;
+      this.addEventListener('click', (e) => {
+        const opt = e.target.closest('.finder__option');
+        if (opt) {
+          $$('.finder__option', opt.closest('[data-step]')).forEach((o) => o.classList.toggle('is-selected', o === opt));
+          this.answers[this.step] = opt.dataset.param || '';
+          this.show(this.step + 1);
+        }
+        if (e.target.closest('[data-back]')) this.show(this.step - 1);
+        if (e.target.closest('[data-restart]')) {
+          this.answers = [];
+          $$('.is-selected', this).forEach((o) => o.classList.remove('is-selected'));
+          this.show(0);
+        }
+      });
+    }
+    show(i) {
+      this.step = Math.max(0, i);
+      const finished = this.step >= this.steps.length;
+      this.steps.forEach((s, k) => (s.hidden = finished || k !== this.step));
+      this.dots.forEach((d, k) => {
+        d.classList.toggle('is-current', k === this.step);
+        d.classList.toggle('is-done', k < this.step);
+      });
+      this.done.hidden = !finished;
+      if (finished) {
+        const params = this.answers.slice(0, this.steps.length).filter(Boolean).join('&');
+        const base = this.dataset.results;
+        this.link.href = params ? `${base}${base.includes('?') ? '&' : '?'}${params}` : base;
+        this.link.focus();
+      } else {
+        $('.finder__option', this.steps[this.step])?.focus();
+      }
+    }
+  }
+  define('gift-finder', GiftFinder);
+
+  /* ---------- Video reviews (short-form) ---------- */
+  class VideoReviews extends HTMLElement {
+    connectedCallback() {
+      this.screens = $$('[data-vrev-screen]', this).filter((s) => $('video', s));
+      this.screens.forEach((screen) => {
+        const v = $('video', screen);
+        const mute = $('[data-vrev-mute]', screen);
+        screen.addEventListener('click', (e) => {
+          if (e.target.closest('[data-vrev-mute]')) return;
+          if (v.paused) this.play(screen); else v.pause();
+        });
+        mute?.addEventListener('click', () => {
+          const muted = !v.muted;
+          if (!muted) this.screens.forEach((o) => { if (o !== screen) this.setMuted(o, true); });
+          this.setMuted(screen, muted);
+          if (!muted) this.play(screen);
+        });
+        v.addEventListener('pause', () => screen.classList.remove('is-playing'));
+        v.addEventListener('play', () => screen.classList.add('is-playing'));
+      });
+      if (this.dataset.autoplay === 'true' && !reduceMotion && 'IntersectionObserver' in window) {
+        this.io = new IntersectionObserver((entries) => {
+          entries.forEach((en) => {
+            if (en.isIntersecting && en.intersectionRatio > 0.6) this.play(en.target);
+            else { const v = $('video', en.target); if (v && !v.paused) v.pause(); }
+          });
+        }, { threshold: [0, 0.6, 1] });
+        this.screens.forEach((s) => this.io.observe(s));
+      }
+    }
+    disconnectedCallback() { this.io?.disconnect(); }
+    setMuted(screen, muted) {
+      const v = $('video', screen);
+      const b = $('[data-vrev-mute]', screen);
+      if (v) v.muted = muted;
+      if (b) { b.setAttribute('aria-pressed', String(!muted)); b.setAttribute('aria-label', muted ? b.dataset.labelUnmute : b.dataset.labelMute); }
+    }
+    play(screen) {
+      const v = $('video', screen);
+      if (!v) return;
+      if (v.preload === 'none') v.preload = 'metadata';
+      v.play().catch(() => {});
+    }
+  }
+  define('video-reviews', VideoReviews);
+
+  /* ---------- Before / after ---------- */
+  class BeforeAfter extends HTMLElement {
+    connectedCallback() {
+      const range = $('[data-ba-range]', this);
+      if (!range) return;
+      const set = () => this.style.setProperty('--pos', `${range.value}%`);
+      range.addEventListener('input', set);
+      set();
+    }
+  }
+  define('before-after', BeforeAfter);
+
   /* ---------- Misc ---------- */
   document.addEventListener('click', async (e) => {
     const share = e.target.closest('[data-share]');
@@ -625,6 +837,7 @@
   document.addEventListener('shopify:section:load', () => { revealAll(); Wishlist.sync(); });
   document.addEventListener('shopify:block:select', (e) => {
     e.target.closest('details')?.setAttribute('open', '');
+    e.target.closest('slide-show')?.goToBlock?.(e.target);
     e.target.scrollIntoView?.({ block: 'nearest', inline: 'center' });
   });
 })();

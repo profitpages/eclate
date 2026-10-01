@@ -56,6 +56,14 @@ Promo codes use Shopify's discount links, so codes from **Discounts** apply at c
 Benefits (panel / cards / pills), Story (brand or product story), Trust bar, Ingredients, Ritual steps / How to use,
 Skin types, Testimonials, Blog posts, FAQ (with search markup), Newsletter, Promotional banner (cards / editorial),
 Complete your routine (add-all bundle), Recently viewed, Custom Liquid.
+**Optional extras (Add section in the editor):** Slideshow, Shop by concern, Featured product (spotlight with buy box),
+Video (YouTube / Vimeo / upload, click-to-load), Scrolling text, Rich text, Countdown banner, "Find your ritual" skin quiz,
+Shoppable gallery, Press & logos, Comparison table, Multirow, Multicolumn, Video reviews (TikTok / Reels style),
+Before / after slider.
+- **Skin quiz:** each answer has a *Filter parameter*, for example `filter.p.m.custom.skin_type=Dry` or
+  `filter.v.price.lte=40`. Enable the matching filters in *Search & Discovery*, and the quiz opens the results collection already filtered.
+- **Countdown:** the end date and time use the store's timezone. When it ends, the banner either hides or shows a message.
+- **Video reviews / Before & after:** only use clips and photos from genuine customers that you have the rights to use.
 **Product:** Product information (gallery, zoom, swatches, sticky add-to-bag), Product details (metafield accordions),
 Reviews (app slot), Product recommendations.
 **Collection:** Collection banner, Product grid (tabs, filters, sort, promo tile, load more), Collections list.

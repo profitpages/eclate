@@ -1,0 +1,76 @@
+{%- comment -%} Shop by concern — the beauty equivalent of "shop by age". Arch tiles with soft icon orbs. {%- endcomment -%}
+{{ 'section-extras.css' | asset_url | stylesheet_tag }}
+{%- assign s = section.settings -%}
+<section class="section color-{{ s.color_scheme }}">
+  {%- render 'decor', preset: 'corner' -%}
+  <div class="page-width">
+    {%- render 'section-heading', kicker: s.kicker, title: s.heading, text: s.text, align: 'center' -%}
+    <ul class="concerns" role="list">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        {%- assign url = b.link | default: b.collection.url | default: routes.all_products_collection_url -%}
+        <li class="concern" data-reveal style="--tint: {{ b.tint }};" {{ block.shopify_attributes }}>
+          <a class="concern__link" href="{{ url }}">
+            <span class="concern__orb">
+              {%- if b.image != blank -%}
+                {{ b.image | image_url: width: 240 | image_tag: loading: 'lazy', alt: '', width: 120, height: 120, class: 'concern__img' }}
+              {%- else -%}
+                {%- render 'icon', name: b.icon, size: 30 -%}
+              {%- endif -%}
+            </span>
+            <span class="concern__title">{{ b.title | escape }}</span>
+            {%- if b.text != blank -%}<span class="concern__text">{{ b.text | escape }}</span>{%- endif -%}
+            <span class="concern__go" aria-hidden="true">{% render 'icon', name: 'arrow-right', size: 16 %}</span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Shop by concern",
+  "class": "section-concerns",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Start with your skin" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by concern" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Tell us what your skin is asking for — we'll show you the rituals made for it.</p>" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
+  ],
+  "blocks": [
+    {
+      "type": "concern", "name": "Concern",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Concern", "default": "Dryness" },
+        { "type": "text", "id": "text", "label": "Short note", "default": "Cushion & comfort" },
+        {
+          "type": "select", "id": "icon", "label": "Icon",
+          "options": [
+            { "value": "drop", "label": "Drop" }, { "value": "sun", "label": "Sun" }, { "value": "sparkle", "label": "Glow" }, { "value": "leaf", "label": "Leaf" },
+            { "value": "moon", "label": "Moon" }, { "value": "flower", "label": "Flower" }, { "value": "shield", "label": "Shield" }, { "value": "heart", "label": "Heart" }
+          ],
+          "default": "drop"
+        },
+        { "type": "image_picker", "id": "image", "label": "Custom image", "info": "Replaces the icon (e.g. a texture swatch)." },
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "url", "id": "link", "label": "Custom link", "info": "E.g. a filtered link: /collections/all?filter.p.m.custom.concern=Dryness" },
+        { "type": "color", "id": "tint", "label": "Orb color", "default": "#efd1cf" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by concern",
+      "blocks": [
+        { "type": "concern", "settings": { "title": "Dryness", "text": "Cushion & comfort", "icon": "drop", "tint": "#d9e4ef" } },
+        { "type": "concern", "settings": { "title": "Dullness", "text": "Bring back the glow", "icon": "sun", "tint": "#f5e3c2" } },
+        { "type": "concern", "settings": { "title": "Fine lines", "text": "Bounce & smooth", "icon": "sparkle", "tint": "#ded0ea" } },
+        { "type": "concern", "settings": { "title": "Blemishes", "text": "Calm & clarify", "icon": "leaf", "tint": "#dfe8dc" } },
+        { "type": "concern", "settings": { "title": "Sensitivity", "text": "Soothe & protect", "icon": "heart", "tint": "#f2d6d2" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
