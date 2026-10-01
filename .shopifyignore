@@ -1,0 +1,6 @@
+_design-source/
+README.md
+GETTING-STARTED.md
+.gitignore
+.gitattributes
+.theme-check.yml

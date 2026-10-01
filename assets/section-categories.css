@@ -1,0 +1,26 @@
+.cats { display: grid; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); gap: 20px; list-style: none; margin: 0; padding: 0; }
+.cat__link { display: flex; flex-direction: column; gap: 14px; height: 100%; text-decoration: none; color: inherit; position: relative; }
+.cat__stage {
+  position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--radius-card);
+  background: linear-gradient(150deg, color-mix(in srgb, var(--tint) 55%, #fff), var(--tint));
+  box-shadow: inset 10px 10px 18px rgba(255, 255, 255, .45), inset -12px -12px 22px rgba(var(--shadow-rgb), .1), 0 14px 24px rgba(var(--shadow-rgb), calc(.1 * var(--shadow-k)));
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+.cats--arch .cat__stage { border-radius: 999px 999px var(--radius-card) var(--radius-card); }
+.cat__img, .cat__stage .art-fallback { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2, .8, .2, 1); }
+.cat__stage .art-fallback { background: transparent; }
+.cat__stage .cosmo { transform: scale(1.35); }
+.cat__link:hover .cat__stage { transform: translateY(calc(var(--depth) * -1)); box-shadow: inset 10px 10px 18px rgba(255, 255, 255, .45), inset -12px -12px 22px rgba(var(--shadow-rgb), .1), 0 26px 40px rgba(var(--shadow-rgb), calc(.16 * var(--shadow-k))); }
+.cat__link:hover .cat__img { transform: scale(1.06) translateY(-4px); }
+.cat__body { display: grid; gap: 4px; padding-right: 48px; }
+.cat__title { font: 400 1.45rem/1.15 var(--font-heading); }
+.cat__text { font-size: .88rem; color: var(--muted); }
+.cat__count { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-top: 2px; }
+.cat__arrow { position: absolute; right: 0; bottom: 6px; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--border); transition: background-color .25s, color .25s, transform .25s; }
+.cat__link:hover .cat__arrow { background: var(--btn); color: var(--btn-label); border-color: var(--btn); transform: translateX(3px); }
+@media (max-width: 989px) { .cats { grid-template-columns: repeat(min(var(--cols, 4), 3), minmax(0, 1fr)); } }
+@media (max-width: 749px) {
+  .cats { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 64%; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 4px 20px; position: relative; }
+  .cat { scroll-snap-align: start; }
+  .cat__title { font-size: 1.25rem; }
+}

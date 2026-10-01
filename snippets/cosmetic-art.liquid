@@ -1,0 +1,39 @@
+{%- comment -%}
+  2.5D CSS cosmetic objects — the default art when no image is set.
+  Usage: {% render 'cosmetic-art', name: 'serum', tone: 'blush' %}
+  names: serum, jar, tube, lipstick, compact, pump, swatch
+  tone: blush | lilac | peach | sand | sage (affects glass/liquid colors)
+  Decorative only (aria-hidden).
+{%- endcomment -%}
+{%- assign tone_name = tone | default: 'blush' -%}
+<div class="cosmo cosmo--{{ name | default: 'serum' }} cosmo-tone--{{ tone_name }}" aria-hidden="true">
+  <span class="cosmo__shadow"></span>
+  {%- case name -%}
+    {%- when 'jar' -%}
+      <span class="cosmo__lid"></span>
+      <span class="cosmo__body"><span class="cosmo__label"></span></span>
+    {%- when 'tube' -%}
+      <span class="cosmo__body"><span class="cosmo__label"></span></span>
+      <span class="cosmo__cap"></span>
+    {%- when 'lipstick' -%}
+      <span class="cosmo__bullet"></span>
+      <span class="cosmo__collar"></span>
+      <span class="cosmo__body"></span>
+    {%- when 'compact' -%}
+      <span class="cosmo__mirror"></span>
+      <span class="cosmo__base"><span class="cosmo__pan"></span><span class="cosmo__pan cosmo__pan--2"></span></span>
+    {%- when 'pump' -%}
+      <span class="cosmo__nozzle"></span>
+      <span class="cosmo__neck"></span>
+      <span class="cosmo__body"><span class="cosmo__label"></span></span>
+    {%- when 'swatch' -%}
+      <span class="cosmo__smear"></span>
+      <span class="cosmo__dot"></span>
+      <span class="cosmo__dot cosmo__dot--2"></span>
+    {%- else -%}
+      <span class="cosmo__bulb"></span>
+      <span class="cosmo__collar"></span>
+      <span class="cosmo__body"><span class="cosmo__liquid"></span><span class="cosmo__label"></span></span>
+  {%- endcase -%}
+  <span class="cosmo__shine"></span>
+</div>

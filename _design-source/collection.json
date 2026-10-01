@@ -1,0 +1,280 @@
+{
+ "announcement-bar": {
+  "bg": "#5b2637"
+ },
+ "announcement-text": {
+  "text": "Complimentary shipping on orders over ₹4,500"
+ },
+ "v": {
+  "color": "#2d201e",
+  "weight": "normal",
+  "size": 16.0
+ },
+ "brand-logo": {
+  "text": "AURELIA"
+ },
+ "breadcrumb-current": {
+  "text": "Collection"
+ },
+ "breadcrumb-home": {
+  "text": "Home"
+ },
+ "collection-description": {
+  "text": "Skin-loving colour, care, and sensorial formulas designed to turn your everyday into a small, beautiful ritual."
+ },
+ "collection-hero": {
+  "bg": "#e8d2ca"
+ },
+ "collection-title": {
+  "text": "Beauty, considered."
+ },
+ "editorial-callout": {
+  "bg": "#617062"
+ },
+ "editorial-copy": {
+  "text": "Every Aurelia ritual begins with intelligently chosen botanicals, modern actives, and a focus on skin comfort."
+ },
+ "editorial-eyebrow": {
+  "text": "Our ingredient philosophy"
+ },
+ "editorial-link": {
+  "text": "Meet the ingredients"
+ },
+ "editorial-title": {
+  "text": "Formulas that feel like a deep breath."
+ },
+ "empty-copy": {
+  "text": "Try clearing a filter or exploring our complete collection."
+ },
+ "empty-title": {
+  "text": "No rituals found"
+ },
+ "filter-title": {
+  "text": "Refine"
+ },
+ "footer-about-title": {
+  "text": "Aurelia"
+ },
+ "footer-blurb": {
+  "text": "Thoughtful beauty for skin, spirit, and the space in between."
+ },
+ "footer-copyright": {
+  "text": "© 2026 Aurelia Beauty. All rights reserved."
+ },
+ "footer-help-title": {
+  "text": "Need help?"
+ },
+ "footer-logo": {
+  "text": "AURELIA"
+ },
+ "footer-note": {
+  "text": "Made slowly, chosen thoughtfully."
+ },
+ "footer-shop-title": {
+  "text": "Shop"
+ },
+ "hero-eyebrow": {
+  "text": "The complete edit"
+ },
+ "load-more-button": {
+  "text": "Load more rituals"
+ },
+ "mobile-filter-button": {
+  "text": "Filters"
+ },
+ "mobile-filter-title": {
+  "text": "Filter rituals"
+ },
+ "nav-cart": {
+  "text": "Cart"
+ },
+ "nav-collection": {
+  "text": "Collection"
+ },
+ "nav-home": {
+  "text": "Home"
+ },
+ "nav-product": {
+  "text": "Product"
+ },
+ "newsletter-button": {
+  "text": "Join us"
+ },
+ "newsletter-copy": {
+  "text": "Receive considered rituals, early access, and thoughtful beauty notes in your inbox."
+ },
+ "newsletter-eyebrow": {
+  "text": "Notes from Aurelia"
+ },
+ "newsletter-section": {
+  "bg": "#5b2637"
+ },
+ "newsletter-title": {
+  "text": "Your invitation to slow beauty."
+ },
+ "product-1-add": {
+  "text": "Quick add"
+ },
+ "product-1-badge": {
+  "text": "Bestseller"
+ },
+ "product-1-compare": {
+  "text": "₹5,250"
+ },
+ "product-1-kind": {
+  "text": "Barrier moisturiser"
+ },
+ "product-1-name": {
+  "text": "Cloud Veil Cream"
+ },
+ "product-1-price": {
+  "text": "₹4,200"
+ },
+ "product-1-reviews": {
+  "text": "4.9 (184)"
+ },
+ "product-1-save": {
+  "text": "Save 20%"
+ },
+ "product-2-add": {
+  "text": "Quick add"
+ },
+ "product-2-badge": {
+  "text": "New"
+ },
+ "product-2-kind": {
+  "text": "Vitamin C concentrate"
+ },
+ "product-2-name": {
+  "text": "Golden Hour Serum"
+ },
+ "product-2-price": {
+  "text": "₹5,600"
+ },
+ "product-2-reviews": {
+  "text": "4.8 (96)"
+ },
+ "product-3-add": {
+  "text": "Quick add"
+ },
+ "product-3-badge": {
+  "text": "Limited"
+ },
+ "product-3-kind": {
+  "text": "Soft-focus cheek colour"
+ },
+ "product-3-name": {
+  "text": "Petal Flush Palette"
+ },
+ "product-3-price": {
+  "text": "₹3,600"
+ },
+ "product-3-reviews": {
+  "text": "4.7 (74)"
+ },
+ "product-4-add": {
+  "text": "Quick add"
+ },
+ "product-4-kind": {
+  "text": "Satin colour balm"
+ },
+ "product-4-name": {
+  "text": "Velvet Muse Lipstick"
+ },
+ "product-4-price": {
+  "text": "₹2,900"
+ },
+ "product-4-reviews": {
+  "text": "4.6 (121)"
+ },
+ "product-5-add": {
+  "text": "Quick add"
+ },
+ "product-5-badge": {
+  "text": "Editor’s pick"
+ },
+ "product-5-kind": {
+  "text": "Nourishing body lotion"
+ },
+ "product-5-name": {
+  "text": "Bare Skin Body Milk"
+ },
+ "product-5-price": {
+  "text": "₹3,400"
+ },
+ "product-5-reviews": {
+  "text": "4.9 (62)"
+ },
+ "product-6-add": {
+  "text": "Notify me"
+ },
+ "product-6-kind": {
+  "text": "Replenishing facial oil"
+ },
+ "product-6-name": {
+  "text": "Night Orchard Oil"
+ },
+ "product-6-price": {
+  "text": "₹4,900"
+ },
+ "product-6-reviews": {
+  "text": "4.5 (41)"
+ },
+ "recent-1-name": {
+  "text": "Cloud Veil Cream"
+ },
+ "recent-2-name": {
+  "text": "Golden Hour Serum"
+ },
+ "recent-eyebrow": {
+  "text": "Continue your ritual"
+ },
+ "recent-link": {
+  "text": "Shop all"
+ },
+ "recent-title": {
+  "text": "Recently viewed"
+ },
+ "recommend-eyebrow": {
+  "text": "Chosen for you"
+ },
+ "recommend-title": {
+  "text": "A little more to love"
+ },
+ "recommended-1-eyebrow": {
+  "text": "Skin reset"
+ },
+ "recommended-1-link": {
+  "text": "Discover skincare"
+ },
+ "recommended-1-title": {
+  "text": "Comforting essentials for sensitive days."
+ },
+ "recommended-2-eyebrow": {
+  "text": "After dark"
+ },
+ "recommended-2-link": {
+  "text": "Explore night care"
+ },
+ "recommended-2-title": {
+  "text": "The evening edit, rich in replenishment."
+ },
+ "site-footer": {
+  "bg": "#2d201e"
+ },
+ "site-header": {
+  "bg": "#fffdf9"
+ },
+ "tab-all": {
+  "text": "All"
+ },
+ "tab-body": {
+  "text": "Body"
+ },
+ "tab-makeup": {
+  "text": "Makeup"
+ },
+ "tab-skincare": {
+  "text": "Skincare"
+ }
+}

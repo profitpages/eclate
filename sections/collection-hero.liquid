@@ -1,0 +1,67 @@
+{%- comment -%} Collection banner — uses the collection's title, description and image by default. {%- endcomment -%}
+{{ 'section-collection.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign s = section.settings
+  assign title = s.heading
+  assign desc = s.text
+  assign bg_img = s.background_image
+  assign frame_img = s.image
+  if collection
+    assign title = collection.title
+    if collection.description != blank
+      assign desc = collection.description
+    endif
+    if frame_img == blank
+      assign frame_img = collection.image
+    endif
+  elsif request.page_type == 'search'
+    assign title = 'search.title' | t
+  endif
+-%}
+<section class="coll-hero-wrap color-{{ s.section_scheme }}">
+  <div class="page-width">
+    {%- if s.show_breadcrumb -%}{%- render 'breadcrumb' -%}{%- endif -%}
+    <div class="coll-hero color-{{ s.color_scheme }}">
+      {%- if bg_img != blank -%}
+        <div class="coll-hero__bg">{%- render 'responsive-image', image: bg_img, max: 2000, sizes: '100vw', class: 'coll-hero__bg-img', eager: true -%}</div>
+      {%- endif -%}
+      {%- render 'decor', preset: 'band' -%}
+      <div class="coll-hero__copy">
+        {%- if s.kicker != blank -%}<p class="kicker">{{ s.kicker | escape }}</p>{%- endif -%}
+        <h1 class="display coll-hero__title">{{ title | escape }}</h1>
+        {%- if desc != blank -%}<div class="rte coll-hero__text">{{ desc }}</div>{%- endif -%}
+        {%- if s.show_count and collection -%}<p class="coll-hero__count">{{ 'collections.product_count' | t: count: collection.products_count }}</p>{%- endif -%}
+      </div>
+      {%- if s.show_art -%}
+        <div class="coll-hero__art" aria-hidden="true">
+          <span class="coll-hero__sun float-y"></span>
+          <div class="coll-hero__frame">
+            {%- render 'responsive-image', image: frame_img, max: 800, sizes: '(min-width: 990px) 300px, 220px', eager: true, art: 'serum', tone: 'peach' -%}
+          </div>
+          {%- if s.pill != blank -%}<span class="coll-hero__pill">{{ s.pill | escape }}</span>{%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection banner",
+  "class": "section-collection-hero",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "The complete edit" },
+    { "type": "text", "id": "heading", "label": "Heading (when not on a collection)", "default": "Beauty, considered." },
+    { "type": "richtext", "id": "text", "label": "Text (when the collection has no description)", "default": "<p>Skin-loving colour, care, and sensorial formulas designed to turn your everyday into a small, beautiful ritual.</p>" },
+    { "type": "image_picker", "id": "background_image", "label": "Faded background image" },
+    { "type": "checkbox", "id": "show_art", "label": "Show floating framed image", "default": true },
+    { "type": "image_picker", "id": "image", "label": "Framed image", "info": "Defaults to the collection image." },
+    { "type": "text", "id": "pill", "label": "Pill label", "default": "Ritual ready" },
+    { "type": "checkbox", "id": "show_count", "label": "Show product count", "default": true },
+    { "type": "checkbox", "id": "show_breadcrumb", "label": "Show breadcrumb", "default": true },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Banner color scheme", "default": "scheme-4" },
+    { "type": "color_scheme", "id": "section_scheme", "label": "Section color scheme", "default": "scheme-1" }
+  ],
+  "presets": [{ "name": "Collection banner" }]
+}
+{% endschema %}

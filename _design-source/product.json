@@ -1,0 +1,335 @@
+{
+ "accordion-description-content": {
+  "text": "Designed for the moments when skin looks depleted, this luminous treatment layers weightless moisture with a plush, velvety finish. It leaves a rested, candlelit look—never tacky, never overdone."
+ },
+ "v": {
+  "color": "#241e1b",
+  "weight": "semibold",
+  "size": 16.0
+ },
+ "accordion-description-title": {
+  "text": "The ritual"
+ },
+ "accordion-ingredients-content": {
+  "text": "Multi-weight hyaluronic acid, a targeted peptide complex, stabilised vitamin C derivative, glycerin and soothing panthenol. Free from fragrance, essential oils and drying alcohols."
+ },
+ "accordion-ingredients-title": {
+  "text": "Inside the bottle"
+ },
+ "accordion-results-content": {
+  "text": "In a four-week consumer study, 92% agreed their skin looked more hydrated and 87% agreed skin felt visibly firmer and smoother. Individual results may vary."
+ },
+ "accordion-results-title": {
+  "text": "Clinical results"
+ },
+ "accordion-shipping-content": {
+  "text": "Orders are prepared within 24 hours on business days. Enjoy complimentary standard delivery on orders above ₹3,500 and return unopened products within 30 days."
+ },
+ "accordion-shipping-title": {
+  "text": "Shipping & returns"
+ },
+ "accordion-use-content": {
+  "text": "After cleansing, press 2–3 drops into damp skin morning and evening. Follow with moisturiser. In the daytime, finish with SPF."
+ },
+ "accordion-use-title": {
+  "text": "How to use"
+ },
+ "add-cart-button": {
+  "color": "#ffffff",
+  "bg": "#bd6251"
+ },
+ "add-cart-label": {
+  "text": "Add to bag"
+ },
+ "add-routine-button": {
+  "color": "#241e1b",
+  "bg": "#f5c6ae"
+ },
+ "add-routine-label": {
+  "text": "Add the routine"
+ },
+ "announcement-bar": {
+  "color": "#fbf7ef",
+  "bg": "#241e1b"
+ },
+ "announcement-text": {
+  "text": "A luminous ritual, delivered with a complimentary sample"
+ },
+ "benefit-one": {
+  "text": "Fragrance-free"
+ },
+ "benefit-three": {
+  "text": "Barrier kind"
+ },
+ "benefit-two": {
+  "text": "Dermatologist tested"
+ },
+ "breadcrumb-current": {
+  "text": "Luminous Peptide Serum"
+ },
+ "buy-now-button": {
+  "color": "#241e1b",
+  "bg": "#fbf7ef"
+ },
+ "buy-now-label": {
+  "text": "Buy now"
+ },
+ "cart-toast-text": {
+  "text": "Luminous Peptide Serum added to your bag."
+ },
+ "compare-price": {
+  "text": "₹5,000"
+ },
+ "faq-answer-one": {
+  "text": "Yes. This hydrating, fragrance-free formula pairs beautifully with most retinoid routines. Apply it before your moisturiser and follow the instructions for your retinoid."
+ },
+ "faq-answer-three": {
+  "text": "Skin feels replenished immediately. For visible improvements in bounce and luminosity, use consistently for at least four weeks."
+ },
+ "faq-answer-two": {
+  "text": "The formula is dermatologist tested and made without fragrance or essential oils. As with any new product, we recommend patch testing first."
+ },
+ "faq-kicker": {
+  "text": "Good to know"
+ },
+ "faq-question-one": {
+  "text": "Can I use this with retinol?"
+ },
+ "faq-question-three": {
+  "text": "When should I expect to see results?"
+ },
+ "faq-question-two": {
+  "text": "Is it suitable for sensitive skin?"
+ },
+ "faq-title": {
+  "text": "Your questions, answered."
+ },
+ "footer-copy": {
+  "text": "High-touch formulas for your real, luminous life."
+ },
+ "footer-help-title": {
+  "text": "Support"
+ },
+ "footer-legal": {
+  "text": "© 2026 Éclaté Beauty. Made for the glow in between."
+ },
+ "footer-newsletter-copy": {
+  "text": "A small note from the studio, plus early access to new rituals."
+ },
+ "footer-newsletter-title": {
+  "text": "Stay luminous"
+ },
+ "footer-shop-title": {
+  "text": "Explore"
+ },
+ "ingredient-card-one": {
+  "color": "#241e1b",
+  "bg": "#fbf7ef"
+ },
+ "ingredient-card-three": {
+  "color": "#241e1b",
+  "bg": "#fbf7ef"
+ },
+ "ingredient-card-two": {
+  "color": "#241e1b",
+  "bg": "#fbf7ef"
+ },
+ "ingredient-copy-one": {
+  "text": "A precise blend that supports the look of springy, resilient skin."
+ },
+ "ingredient-copy-three": {
+  "text": "A gentle brightening antioxidant for a more even, lit-from-within finish."
+ },
+ "ingredient-copy-two": {
+  "text": "Three molecular weights cushion skin with long-lasting hydration."
+ },
+ "ingredient-name-one": {
+  "text": "Peptide Complex"
+ },
+ "ingredient-name-three": {
+  "text": "Vitamin C"
+ },
+ "ingredient-name-two": {
+  "text": "Hyaluronic Acid"
+ },
+ "ingredients-kicker": {
+  "text": "Formula intelligence"
+ },
+ "ingredients-section": {
+  "bg": "#eadbd0"
+ },
+ "ingredients-title": {
+  "text": "High-performance care, made soft enough for every day."
+ },
+ "mobile-add-button": {
+  "color": "#ffffff",
+  "bg": "#bd6251"
+ },
+ "mobile-add-label": {
+  "text": "Add to bag"
+ },
+ "mobile-price": {
+  "text": "₹4,250"
+ },
+ "mobile-size": {
+  "text": "30 ml"
+ },
+ "product-description": {
+  "text": "A silk-light, glow-making treatment that floods skin with cushioning hydration and visibly bouncy radiance."
+ },
+ "product-kicker": {
+  "text": "The Radiance Edit"
+ },
+ "product-price": {
+  "text": "₹4,250"
+ },
+ "product-title": {
+  "text": "Luminous Peptide Serum"
+ },
+ "rating-score": {
+  "text": "4.9"
+ },
+ "rating-total": {
+  "text": "Based on 214 verified reviews"
+ },
+ "reassurance-panel": {
+  "color": "#241e1b",
+  "bg": "#f6ddd5"
+ },
+ "recent-name-one": {
+  "text": "Dew Reset Essence"
+ },
+ "recent-name-two": {
+  "text": "Daily Veil SPF 50"
+ },
+ "recently-title": {
+  "text": "Recently viewed"
+ },
+ "related-name-one": {
+  "text": "Velvet Cloud Cream"
+ },
+ "related-name-three": {
+  "text": "Bright Eyes Treatment"
+ },
+ "related-name-two": {
+  "text": "Night Recovery Oil"
+ },
+ "related-price-one": {
+  "text": "₹3,800"
+ },
+ "related-price-three": {
+  "text": "₹2,950"
+ },
+ "related-price-two": {
+  "text": "₹4,600"
+ },
+ "related-title": {
+  "text": "Pair it with"
+ },
+ "returns-note": {
+  "text": "30-day easy returns"
+ },
+ "review-card-one": {
+  "color": "#241e1b",
+  "bg": "#fbf7ef"
+ },
+ "review-card-two": {
+  "color": "#241e1b",
+  "bg": "#fbf7ef"
+ },
+ "review-copy-one": {
+  "text": "This has the most beautiful texture: enough slip for a tiny face massage, then it sinks in and leaves a genuinely soft glow."
+ },
+ "review-copy-two": {
+  "text": "No irritation, no pilling under makeup and a very noticeable difference in how juicy my skin looks by the end of the day."
+ },
+ "review-name-one": {
+  "text": "Maya R. · Verified buyer"
+ },
+ "review-name-two": {
+  "text": "Anika S. · Verified buyer"
+ },
+ "review-title-one": {
+  "text": "My skin looks rested, even on Monday."
+ },
+ "review-title-two": {
+  "text": "The serum I keep repurchasing."
+ },
+ "reviews-kicker": {
+  "text": "Loved in real life"
+ },
+ "reviews-link": {
+  "text": "4.9 · 214 reviews"
+ },
+ "reviews-section": {
+  "bg": "#f2eee6"
+ },
+ "reviews-title": {
+  "text": "Soft skin, loud praise."
+ },
+ "routine-bundle-copy": {
+  "text": "Take the full ritual home and receive 12% off your three-step glow routine."
+ },
+ "routine-copy": {
+  "text": "Thoughtful layers that let your skin look calm, plush and perfectly awake."
+ },
+ "routine-kicker": {
+  "text": "Build your ritual"
+ },
+ "routine-product-one": {
+  "text": "Cloud Gel Cleanser"
+ },
+ "routine-product-three": {
+  "text": "Luminous Peptide Serum"
+ },
+ "routine-product-two": {
+  "text": "Velvet Cloud Cream"
+ },
+ "routine-step-one": {
+  "text": "01 · Cleanse"
+ },
+ "routine-step-three": {
+  "text": "02 · Treat"
+ },
+ "routine-step-two": {
+  "text": "03 · Seal"
+ },
+ "routine-title": {
+  "text": "A three-step glow story."
+ },
+ "sample-note": {
+  "text": "Two samples with every order"
+ },
+ "savings-badge": {
+  "text": "Save 15%"
+ },
+ "secure-note": {
+  "text": "Secure checkout"
+ },
+ "shipping-note": {
+  "text": "Free shipping over ₹3,500"
+ },
+ "site-footer": {
+  "color": "#fbf7ef",
+  "bg": "#241e1b"
+ },
+ "site-header": {
+  "bg": "#fbf7ef"
+ },
+ "size-label": {
+  "text": "Choose your size"
+ },
+ "stock-message": {
+  "text": "In stock — ships within 24 hours"
+ },
+ "wishlist-label": {
+  "text": "Save"
+ },
+ "zoom-button": {
+  "color": "#241e1b",
+  "bg": "#ffffff"
+ },
+ "zoom-label": {
+  "text": "Zoom"
+ }
+}

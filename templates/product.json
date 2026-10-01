@@ -1,0 +1,521 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "show_breadcrumb": true,
+        "enable_zoom": true,
+        "media_badge": "",
+        "sticky_bar": true,
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "kicker_1": {
+          "type": "kicker",
+          "settings": {
+            "show_save": true,
+            "text": ""
+          }
+        },
+        "title_2": {
+          "type": "title",
+          "settings": {
+            "show_vendor": false
+          }
+        },
+        "description_3": {
+          "type": "description",
+          "settings": {
+            "words": 25
+          }
+        },
+        "rating_4": {
+          "type": "rating",
+          "settings": {}
+        },
+        "divider_5": {
+          "type": "divider",
+          "settings": {}
+        },
+        "price_6": {
+          "type": "price",
+          "settings": {}
+        },
+        "inventory_7": {
+          "type": "inventory",
+          "settings": {
+            "in_stock_text": "In stock — ships within 24 hours",
+            "threshold": 5
+          }
+        },
+        "divider_8": {
+          "type": "divider",
+          "settings": {}
+        },
+        "highlights_9": {
+          "type": "highlights",
+          "settings": {
+            "items": "Fragrance-free\nDermatologist tested\nBarrier kind"
+          }
+        },
+        "variant_picker_10": {
+          "type": "variant_picker",
+          "settings": {}
+        },
+        "buy_buttons_11": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_buy_now": true
+          }
+        },
+        "reassurance_12": {
+          "type": "reassurance",
+          "settings": {
+            "text_1": "Free shipping over $75",
+            "text_2": "30-day easy returns",
+            "text_3": "Secure checkout",
+            "text_4": "Two samples with every order",
+            "color_scheme": "scheme-4"
+          }
+        }
+      },
+      "block_order": [
+        "kicker_1",
+        "title_2",
+        "description_3",
+        "rating_4",
+        "divider_5",
+        "price_6",
+        "inventory_7",
+        "divider_8",
+        "highlights_9",
+        "variant_picker_10",
+        "buy_buttons_11",
+        "reassurance_12"
+      ]
+    },
+    "details": {
+      "type": "product-details",
+      "settings": {
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "heading": "The ritual",
+            "source": "description",
+            "open": true
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "heading": "Inside the bottle",
+            "source": "ingredients",
+            "open": false
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "heading": "How to use",
+            "source": "how_to_use",
+            "open": false
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "heading": "Clinical results",
+            "source": "results",
+            "open": false
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "heading": "Skin type",
+            "source": "skin_type",
+            "open": false
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "heading": "Size",
+            "source": "size",
+            "open": false
+          }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": {
+            "heading": "Shipping & returns",
+            "source": "custom",
+            "open": false,
+            "content": "<p>Orders are prepared within 24 hours on business days. Unopened products can be returned within 30 days.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7"
+      ]
+    },
+    "key_benefits": {
+      "type": "benefits",
+      "settings": {
+        "kicker": "Why it works",
+        "heading": "Key benefits",
+        "style": "pills",
+        "columns": 5,
+        "color_scheme": "scheme-3",
+        "section_scheme": "scheme-1"
+      },
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "drop",
+            "title": "Hydrating",
+            "text": ""
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "sun",
+            "title": "Brightening",
+            "text": ""
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "flower",
+            "title": "Nourishing",
+            "text": ""
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "sparkle",
+            "title": "Lightweight",
+            "text": ""
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "icon": "clock",
+            "title": "Long-lasting",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5"
+      ]
+    },
+    "ingredients": {
+      "type": "ingredients",
+      "settings": {
+        "kicker": "Formula intelligence",
+        "heading": "High-performance care, made soft enough for every day.",
+        "use_metafield": false,
+        "style": "lift",
+        "columns": 3,
+        "color_scheme": "scheme-5"
+      },
+      "blocks": {
+        "ingredient_1": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Peptide complex",
+            "text": "A precise blend that supports the look of springy, resilient skin.",
+            "benefit": "Firms"
+          }
+        },
+        "ingredient_2": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Hyaluronic acid",
+            "text": "Three molecular weights cushion skin with long-lasting hydration.",
+            "benefit": "Hydrates"
+          }
+        },
+        "ingredient_3": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Vitamin C",
+            "text": "A gentle brightening antioxidant for a more even, lit-from-within finish.",
+            "benefit": "Brightens"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_1",
+        "ingredient_2",
+        "ingredient_3"
+      ]
+    },
+    "how_to_use": {
+      "type": "ritual-steps",
+      "settings": {
+        "kicker": "How to use",
+        "heading": "Four steps to a softer glow.",
+        "use_metafield": true,
+        "button_label": "",
+        "panel": true,
+        "color_scheme": "scheme-4",
+        "section_scheme": "scheme-1"
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Cleanse",
+            "text": "Start with freshly cleansed, slightly damp skin."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Apply",
+            "text": "Press 2–3 drops into palms and onto face and neck."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Massage",
+            "text": "Sweep upward with gentle pressure until absorbed."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Glow",
+            "text": "Follow with moisturiser, and SPF in the morning."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ]
+    },
+    "skin_types": {
+      "type": "skin-types",
+      "settings": {
+        "kicker": "Made for",
+        "heading": "Every skin type, gently.",
+        "use_metafield": true,
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {
+        "type_1": {
+          "type": "type",
+          "settings": {
+            "icon": "drop",
+            "label": "Dry",
+            "text": "Craves cushion"
+          }
+        },
+        "type_2": {
+          "type": "type",
+          "settings": {
+            "icon": "sun",
+            "label": "Oily",
+            "text": "Needs balance"
+          }
+        },
+        "type_3": {
+          "type": "type",
+          "settings": {
+            "icon": "leaf",
+            "label": "Combination",
+            "text": "Wants both"
+          }
+        },
+        "type_4": {
+          "type": "type",
+          "settings": {
+            "icon": "heart",
+            "label": "Sensitive",
+            "text": "Loves gentle"
+          }
+        },
+        "type_5": {
+          "type": "type",
+          "settings": {
+            "icon": "sparkle",
+            "label": "Normal",
+            "text": "Keeps it simple"
+          }
+        }
+      },
+      "block_order": [
+        "type_1",
+        "type_2",
+        "type_3",
+        "type_4",
+        "type_5"
+      ]
+    },
+    "routine": {
+      "type": "routine",
+      "settings": {
+        "kicker": "Build your ritual",
+        "heading": "A three-step glow story.",
+        "text": "<p>Thoughtful layers that let your skin look calm, plush and perfectly awake.</p>",
+        "bundle_kicker": "The full ritual",
+        "bundle_title": "Take the whole routine home.",
+        "button_label": "Add the routine",
+        "bundle_scheme": "scheme-6",
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "label": "Cleanse",
+            "use_current": false
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "label": "Treat",
+            "use_current": true
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "label": "Seal",
+            "use_current": false
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ]
+    },
+    "reviews": {
+      "type": "reviews",
+      "settings": {
+        "kicker": "Loved in real life",
+        "heading": "Soft skin, loud praise.",
+        "summary_scheme": "scheme-4",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "kicker": "Good to know",
+        "heading": "Your questions, answered.",
+        "align": "center",
+        "schema_markup": true,
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "Can I use this with retinol?",
+            "answer": "<p>Most hydrating, fragrance-free formulas pair well with retinoids. Apply on alternate evenings at first and follow with moisturiser.</p>",
+            "open": false
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "Is it suitable for sensitive skin?",
+            "answer": "<p>Check the ingredient list and patch-test any new product before full use.</p>",
+            "open": false
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "When should I expect to see results?",
+            "answer": "<p>Skin feels replenished immediately; give a new routine four weeks for visible change.</p>",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3"
+      ]
+    },
+    "pair_with": {
+      "type": "product-recommendations",
+      "settings": {
+        "intent": "complementary",
+        "kicker": "Complete the ritual",
+        "heading": "Pair it with",
+        "limit": 3,
+        "columns": 3,
+        "layout": "grid",
+        "card_style": "soft",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "also_like": {
+      "type": "product-recommendations",
+      "settings": {
+        "intent": "related",
+        "kicker": "More to love",
+        "heading": "You may also like",
+        "limit": 8,
+        "columns": 4,
+        "layout": "carousel",
+        "card_style": "soft",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "recent": {
+      "type": "recently-viewed",
+      "settings": {
+        "kicker": "Continue your ritual",
+        "heading": "Recently viewed",
+        "link_label": "Shop all",
+        "limit": 4,
+        "color_scheme": "scheme-4"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "details",
+    "key_benefits",
+    "ingredients",
+    "how_to_use",
+    "skin_types",
+    "routine",
+    "reviews",
+    "faq",
+    "pair_with",
+    "also_like",
+    "recent"
+  ]
+}

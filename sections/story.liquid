@@ -1,0 +1,90 @@
+{%- comment -%}
+  Brand story / Product story — large lifestyle image in a tilted 2.5D frame + editorial copy.
+{%- endcomment -%}
+{{ 'section-story.css' | asset_url | stylesheet_tag }}
+{%- assign s = section.settings -%}
+<section class="section story color-{{ s.color_scheme }} story--{{ s.layout }}{% if s.image_right %} story--reverse{% endif %}">
+  {%- if s.decor -%}{%- render 'decor', preset: 'band' -%}{%- endif -%}
+  <div class="page-width story__grid">
+    <div class="story__media" data-reveal>
+      <span class="story__backdrop" aria-hidden="true"></span>
+      <div class="story__frame">
+        {%- render 'responsive-image', image: s.image, max: 1400, sizes: '(min-width: 990px) 46vw, 92vw', class: 'story__img', art: s.art, tone: 'lilac' -%}
+      </div>
+      {%- if s.image_2 != blank -%}
+        <div class="story__inset float-y">{%- render 'responsive-image', image: s.image_2, max: 500, sizes: '220px' -%}</div>
+      {%- endif -%}
+      {%- if s.sticker != blank -%}<span class="story__sticker">{{ s.sticker | escape }}</span>{%- endif -%}
+    </div>
+    <div class="story__copy" data-reveal>
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'kicker' -%}<p class="kicker" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+          {%- when 'heading' -%}<h2 class="h2" {{ block.shopify_attributes }}>{{ block.settings.heading | escape }}</h2>
+          {%- when 'text' -%}<div class="rte story__text" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+          {%- when 'benefits' -%}
+            {%- assign items = block.settings.items | newline_to_br | split: '<br />' -%}
+            <ul class="tick-list" role="list" {{ block.shopify_attributes }}>
+              {%- for it in items -%}{%- assign t = it | strip -%}{%- if t != blank -%}<li>{% render 'icon', name: 'check', size: 16 %}<span>{{ t | escape }}</span></li>{%- endif -%}{%- endfor -%}
+            </ul>
+          {%- when 'button' -%}
+            <div class="btn-row" {{ block.shopify_attributes }}>{%- render 'button', label: block.settings.label, url: block.settings.link, style: block.settings.style -%}</div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Story",
+  "class": "section-story",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "image_picker", "id": "image_2", "label": "Floating second image", "info": "Optional detail shot that floats over the corner." },
+    {
+      "type": "select", "id": "art", "label": "Default art (no image)",
+      "options": [{ "value": "serum", "label": "Serum" }, { "value": "jar", "label": "Jar" }, { "value": "pump", "label": "Pump" }, { "value": "compact", "label": "Compact" }],
+      "default": "serum"
+    },
+    { "type": "text", "id": "sticker", "label": "Round sticker" },
+    {
+      "type": "select", "id": "layout", "label": "Layout",
+      "options": [{ "value": "tilted", "label": "Tilted frame" }, { "value": "panel", "label": "Inside a soft panel" }, { "value": "wide", "label": "Large image" }],
+      "default": "tilted"
+    },
+    { "type": "checkbox", "id": "image_right", "label": "Image on the right", "default": false },
+    { "type": "checkbox", "id": "decor", "label": "Decorative orbs", "default": false },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "blocks": [
+    { "type": "kicker", "name": "Kicker", "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Our point of view" }] },
+    { "type": "heading", "name": "Heading", "settings": [{ "type": "text", "id": "heading", "label": "Heading", "default": "Beauty, composed like a still life." }] },
+    { "type": "text", "name": "Text", "settings": [{ "type": "richtext", "id": "text", "label": "Text", "default": "<p>Every formula begins with texture: the silk of a serum, the bloom of a blush, the quiet glow of a good night's sleep. We make sensorial essentials that look as beautiful on your shelf as they feel on your skin.</p>" }] },
+    { "type": "benefits", "name": "Benefit list", "settings": [{ "type": "textarea", "id": "items", "label": "Benefits (one per line)", "default": "Visibly plumper in 2 weeks\nFragrance-free and dermatologist tested\nRecyclable glass packaging" }] },
+    {
+      "type": "button", "name": "Button",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Meet the collection" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "select", "id": "style", "label": "Style", "options": [{ "value": "outline", "label": "Outline" }, { "value": "solid", "label": "Solid" }, { "value": "accent", "label": "Accent" }], "default": "outline" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Brand story", "blocks": [{ "type": "kicker" }, { "type": "heading" }, { "type": "text" }, { "type": "button" }] },
+    {
+      "name": "Product story",
+      "settings": { "layout": "panel", "image_right": true, "decor": true, "sticker": "92% saw glow" },
+      "blocks": [
+        { "type": "kicker", "settings": { "text": "The story" } },
+        { "type": "heading", "settings": { "heading": "Made for the moments skin looks tired." } },
+        { "type": "text", "settings": { "text": "<p>Weightless moisture and a targeted peptide complex for a calm, plush and perfectly awake look.</p>" } },
+        { "type": "benefits" },
+        { "type": "button", "settings": { "label": "Shop the ritual", "style": "solid" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

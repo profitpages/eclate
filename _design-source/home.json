@@ -1,0 +1,324 @@
+{
+ "add-cart-button": {
+  "text": "Add to cart · $42"
+ },
+ "v": {
+  "color": "#422d2c",
+  "bg": "#fbf5ed",
+  "weight": "bold",
+  "size": 16.0
+ },
+ "back-collection": {
+  "color": "#422d2c"
+ },
+ "back-collection-label": {
+  "text": "Back to collection"
+ },
+ "benefit-eyebrow": {
+  "text": "Good things, softly formulated"
+ },
+ "benefit-one-copy": {
+  "text": "Light-catching finishes designed for an effortlessly rested look."
+ },
+ "benefit-one-title": {
+  "text": "Visible glow"
+ },
+ "benefit-panel": {
+  "bg": "#e6d8e8"
+ },
+ "benefit-three-copy": {
+  "text": "Botanical ingredients and recyclable presentation materials."
+ },
+ "benefit-three-title": {
+  "text": "Thoughtfully made"
+ },
+ "benefit-title": {
+  "text": "High-performance rituals with a tender touch."
+ },
+ "benefit-two-copy": {
+  "text": "Cushiony textures that support skin through every season."
+ },
+ "benefit-two-title": {
+  "text": "Lasting comfort"
+ },
+ "brand-name": {
+  "text": "Lumière"
+ },
+ "cart-eyebrow": {
+  "text": "Your beauty bag"
+ },
+ "cart-summary": {
+  "bg": "#eee1df"
+ },
+ "cart-title": {
+  "text": "Cart"
+ },
+ "checkout-button": {
+  "text": "Proceed to checkout"
+ },
+ "collection-count-label": {
+  "text": "6 considered essentials"
+ },
+ "collection-eyebrow": {
+  "text": "Shop the edit"
+ },
+ "collection-name-1": {
+  "text": "Velvet Cloud Serum"
+ },
+ "collection-name-2": {
+  "text": "Petal Barrier Cream"
+ },
+ "collection-name-3": {
+  "text": "Dew Bloom Blush"
+ },
+ "collection-name-4": {
+  "text": "Silk Glass Lip Oil"
+ },
+ "collection-name-5": {
+  "text": "Moon Milk Body Veil"
+ },
+ "collection-name-6": {
+  "text": "Rosewater Essence"
+ },
+ "collection-price-1": {
+  "text": "$42"
+ },
+ "collection-price-2": {
+  "text": "$36"
+ },
+ "collection-price-3": {
+  "text": "$28"
+ },
+ "collection-price-4": {
+  "text": "$24"
+ },
+ "collection-price-5": {
+  "text": "$30"
+ },
+ "collection-price-6": {
+  "text": "$32"
+ },
+ "collection-title": {
+  "text": "Your everyday radiance."
+ },
+ "collection-type-1": {
+  "text": "Skincare"
+ },
+ "collection-type-2": {
+  "text": "Skincare"
+ },
+ "collection-type-3": {
+  "text": "Makeup"
+ },
+ "collection-type-4": {
+  "text": "Makeup"
+ },
+ "collection-type-5": {
+  "text": "Body care"
+ },
+ "collection-type-6": {
+  "text": "Skincare"
+ },
+ "empty-cart-button": {
+  "text": "Shop the edit"
+ },
+ "empty-cart-copy": {
+  "text": "Start with one softly luminous essential."
+ },
+ "empty-cart-panel": {
+  "bg": "#fffaf5"
+ },
+ "empty-cart-title": {
+  "text": "Your bag is waiting."
+ },
+ "featured-card-1": {
+  "bg": "#fffaf5"
+ },
+ "featured-card-2": {
+  "bg": "#fffaf5"
+ },
+ "featured-card-3": {
+  "bg": "#fffaf5"
+ },
+ "featured-card-4": {
+  "bg": "#fffaf5"
+ },
+ "featured-category-1": {
+  "text": "Treatment"
+ },
+ "featured-category-2": {
+  "text": "Moisturiser"
+ },
+ "featured-category-3": {
+  "text": "Colour"
+ },
+ "featured-category-4": {
+  "text": "Colour"
+ },
+ "featured-eyebrow": {
+  "text": "The luminous four"
+ },
+ "featured-link": {
+  "text": "View all products"
+ },
+ "featured-name-1": {
+  "text": "Velvet Cloud Serum"
+ },
+ "featured-name-2": {
+  "text": "Petal Barrier Cream"
+ },
+ "featured-name-3": {
+  "text": "Dew Bloom Blush"
+ },
+ "featured-name-4": {
+  "text": "Silk Glass Lip Oil"
+ },
+ "featured-price-1": {
+  "text": "$42"
+ },
+ "featured-price-2": {
+  "text": "$36"
+ },
+ "featured-price-3": {
+  "text": "$28"
+ },
+ "featured-price-4": {
+  "text": "$24"
+ },
+ "featured-title": {
+  "text": "Best-loved essentials"
+ },
+ "filter-all": {
+  "text": "All products"
+ },
+ "filter-body": {
+  "text": "Body care"
+ },
+ "filter-heading": {
+  "text": "Filter by ritual"
+ },
+ "filter-makeup": {
+  "text": "Makeup"
+ },
+ "filter-skincare": {
+  "text": "Skincare"
+ },
+ "footer-copy": {
+  "text": "Lumière Beauty Theme · A considered storefront concept."
+ },
+ "hero-bubble": {
+  "text": "NEW · ROSE DEW"
+ },
+ "hero-copy": {
+  "text": "Layered skincare and soft-focus colour for the little rituals that make every day feel luminous."
+ },
+ "hero-discover-button": {
+  "text": "Discover the serum"
+ },
+ "hero-eyebrow": {
+  "text": "The ritual edit"
+ },
+ "hero-float-card": {
+  "bg": "#fffdf8"
+ },
+ "hero-float-copy": {
+  "text": "Daily dew, without the weight."
+ },
+ "hero-float-title": {
+  "text": "Cloud-touch hydration"
+ },
+ "hero-proof-one": {
+  "text": "would recommend"
+ },
+ "hero-proof-two": {
+  "text": "community rating"
+ },
+ "hero-shop-button": {
+  "text": "Shop the collection"
+ },
+ "hero-title": {
+  "text": "Skin, lit from within."
+ },
+ "nav-cart": {
+  "color": "#422d2c",
+  "bg": "#fffdf8"
+ },
+ "nav-cart-label": {
+  "text": "Cart"
+ },
+ "nav-home": {
+  "text": "Home"
+ },
+ "nav-shop": {
+  "text": "Shop / Collections"
+ },
+ "product-badge": {
+  "text": "BESTSELLER"
+ },
+ "product-benefit-1": {
+  "text": "Plumps"
+ },
+ "product-benefit-2": {
+  "text": "Hydrates"
+ },
+ "product-benefit-3": {
+  "text": "Comforts"
+ },
+ "product-description": {
+  "text": "A cushiony daily serum that floods skin with petal-soft hydration and a fresh, reflective finish."
+ },
+ "product-name": {
+  "text": "Velvet Cloud Serum"
+ },
+ "product-price": {
+  "text": "$42"
+ },
+ "product-reviews": {
+  "text": "148 luminous reviews"
+ },
+ "product-type": {
+  "text": "Treatment serum"
+ },
+ "promo-button": {
+  "text": "Apply"
+ },
+ "promo-input": {
+  "text": "Promo code"
+ },
+ "shade-label": {
+  "text": "Finish · choose your glow"
+ },
+ "shipping-note": {
+  "text": "Complimentary delivery on orders above $75."
+ },
+ "sort-label": {
+  "text": "Sort"
+ },
+ "story-button": {
+  "text": "Meet the collection"
+ },
+ "story-copy": {
+  "text": "Every formula begins with texture: the silk of a serum, the bloom of a blush, the quiet glow of a good night’s sleep. We make sensorial essentials that look as beautiful on your shelf as they feel on your skin."
+ },
+ "story-eyebrow": {
+  "text": "Our point of view"
+ },
+ "story-title": {
+  "text": "Beauty, composed like a still life."
+ },
+ "subtotal-label": {
+  "text": "Subtotal"
+ },
+ "summary-title": {
+  "text": "Order summary"
+ },
+ "tab-details": {
+  "text": "Details"
+ },
+ "tab-ingredients": {
+  "text": "Ingredients"
+ },
+ "tab-shipping": {
+  "text": "Shipping & returns"
+ }
+}

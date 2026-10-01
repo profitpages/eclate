@@ -1,0 +1,315 @@
+{
+  "sections": {
+    "hero_split": {
+      "type": "hero",
+      "settings": {
+        "layout": "split",
+        "image_position": "center",
+        "art": "jar",
+        "badge": "Bestseller",
+        "card_title": "Cloud-touch hydration",
+        "card_text": "Daily dew, without the weight.",
+        "content_position": "left",
+        "text_align": "start",
+        "height": "auto",
+        "overlay": 25,
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "kicker_1": {
+          "type": "kicker",
+          "settings": {
+            "text": "The ritual edit"
+          }
+        },
+        "heading_2": {
+          "type": "heading",
+          "settings": {
+            "heading": "Skin, lit from within."
+          }
+        },
+        "text_3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Layered skincare and soft-focus colour for the little rituals that make every day feel luminous.</p>"
+          }
+        },
+        "buttons_4": {
+          "type": "buttons",
+          "settings": {
+            "label_1": "Shop the collection",
+            "label_2": "Discover the serum"
+          }
+        },
+        "stats_5": {
+          "type": "stats",
+          "settings": {
+            "value_1": "98%",
+            "label_1": "would recommend",
+            "value_2": "4.9/5",
+            "label_2": "community rating"
+          }
+        }
+      },
+      "block_order": [
+        "kicker_1",
+        "heading_2",
+        "text_3",
+        "buttons_4",
+        "stats_5"
+      ]
+    },
+    "cats_arch": {
+      "type": "beauty-categories",
+      "settings": {
+        "kicker": "Shop by ritual",
+        "heading": "Find your glow.",
+        "link_label": "All collections",
+        "style": "arch",
+        "columns": 4,
+        "show_count": true,
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "category_1": {
+          "type": "category",
+          "settings": {
+            "tint": "#efd1cf",
+            "title": "Skincare",
+            "text": "Serums, creams & essences"
+          }
+        },
+        "category_2": {
+          "type": "category",
+          "settings": {
+            "tint": "#ded0ea",
+            "title": "Makeup",
+            "text": "Soft-focus colour"
+          }
+        },
+        "category_3": {
+          "type": "category",
+          "settings": {
+            "tint": "#f5d3c2",
+            "title": "Body care",
+            "text": "Veils, oils & milks"
+          }
+        },
+        "category_4": {
+          "type": "category",
+          "settings": {
+            "tint": "#eadbd0",
+            "title": "Fragrance",
+            "text": "Quiet, skin-close scents"
+          }
+        }
+      },
+      "block_order": [
+        "category_1",
+        "category_2",
+        "category_3",
+        "category_4"
+      ]
+    },
+    "promo_editorial": {
+      "type": "promo-banner",
+      "settings": {
+        "kicker": "",
+        "heading": "",
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "promo_1": {
+          "type": "promo",
+          "settings": {
+            "layout": "side",
+            "kicker": "Our ingredient philosophy",
+            "heading": "Formulas that feel like a deep breath.",
+            "link_label": "Meet the ingredients",
+            "color_scheme": "scheme-8",
+            "text": "<p>Every ritual begins with intelligently chosen botanicals, modern actives, and a focus on skin comfort.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "promo_1"
+      ]
+    },
+    "story_product": {
+      "type": "story",
+      "settings": {
+        "art": "serum",
+        "layout": "panel",
+        "image_right": true,
+        "decor": true,
+        "color_scheme": "scheme-1",
+        "sticker": "92% saw glow"
+      },
+      "blocks": {
+        "kicker_1": {
+          "type": "kicker",
+          "settings": {
+            "text": "The story"
+          }
+        },
+        "heading_2": {
+          "type": "heading",
+          "settings": {
+            "heading": "Made for the moments skin looks tired."
+          }
+        },
+        "text_3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Weightless moisture and a targeted peptide complex for a calm, plush and perfectly awake look.</p>"
+          }
+        },
+        "benefits_4": {
+          "type": "benefits",
+          "settings": {
+            "items": "Visibly plumper in 2 weeks\nFragrance-free and dermatologist tested\nRecyclable glass packaging"
+          }
+        },
+        "button_5": {
+          "type": "button",
+          "settings": {
+            "label": "Shop the ritual",
+            "style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "kicker_1",
+        "heading_2",
+        "text_3",
+        "benefits_4",
+        "button_5"
+      ]
+    },
+    "skin": {
+      "type": "skin-types",
+      "settings": {
+        "kicker": "Made for",
+        "heading": "Every skin type, gently.",
+        "use_metafield": true,
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {
+        "type_1": {
+          "type": "type",
+          "settings": {
+            "icon": "drop",
+            "label": "Dry",
+            "text": "Craves cushion"
+          }
+        },
+        "type_2": {
+          "type": "type",
+          "settings": {
+            "icon": "sun",
+            "label": "Oily",
+            "text": "Needs balance"
+          }
+        },
+        "type_3": {
+          "type": "type",
+          "settings": {
+            "icon": "leaf",
+            "label": "Combination",
+            "text": "Wants both"
+          }
+        },
+        "type_4": {
+          "type": "type",
+          "settings": {
+            "icon": "heart",
+            "label": "Sensitive",
+            "text": "Loves gentle"
+          }
+        },
+        "type_5": {
+          "type": "type",
+          "settings": {
+            "icon": "sparkle",
+            "label": "Normal",
+            "text": "Keeps it simple"
+          }
+        }
+      },
+      "block_order": [
+        "type_1",
+        "type_2",
+        "type_3",
+        "type_4",
+        "type_5"
+      ]
+    },
+    "routine": {
+      "type": "routine",
+      "settings": {
+        "kicker": "Build your ritual",
+        "heading": "A three-step glow story.",
+        "text": "<p>Thoughtful layers that let your skin look calm, plush and perfectly awake.</p>",
+        "bundle_kicker": "The full ritual",
+        "bundle_title": "Take the whole routine home.",
+        "button_label": "Add the routine",
+        "bundle_scheme": "scheme-6",
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "label": "Cleanse",
+            "use_current": false
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "label": "Treat",
+            "use_current": true
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "label": "Moisturize",
+            "use_current": false
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "label": "Protect",
+            "use_current": false
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ]
+    },
+    "custom": {
+      "type": "custom-liquid",
+      "settings": {
+        "contain": true,
+        "no_padding": false,
+        "color_scheme": "scheme-1",
+        "custom_liquid": "<div class='panel-card' style='text-align:center'><p class='kicker'>Custom Liquid</p><p>Rendered at {{ 'now' | date: '%H:%M' }}</p></div>"
+      }
+    }
+  },
+  "order": [
+    "hero_split",
+    "cats_arch",
+    "promo_editorial",
+    "story_product",
+    "skin",
+    "routine",
+    "custom"
+  ]
+}

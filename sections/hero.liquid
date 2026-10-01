@@ -1,0 +1,178 @@
+{%- comment -%}
+  Hero — three layouts:
+  stage  : Canva layered 2.5D stage (gradient blob + glass outline + organic photo + floating card + tilted badge)
+  split  : text + large rounded image
+  cover  : full-bleed background image with overlay
+{%- endcomment -%}
+{{ 'section-hero.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign s = section.settings
+  assign heading_tag = 'h2'
+  if section.index == 1
+    assign heading_tag = 'h1'
+  endif
+  assign eager = false
+  if section.index <= 2
+    assign eager = true
+  endif
+-%}
+<section class="hero hero--{{ s.layout }} hero--{{ s.height }} hero--content-{{ s.content_position }} hero--align-{{ s.text_align }} color-{{ s.color_scheme }}" style="--hero-overlay: {{ s.overlay | divided_by: 100.0 }}; --img-pos: {{ s.image_position }};">
+  {%- if s.layout != 'cover' -%}{%- render 'decor', preset: 'hero' -%}{%- endif -%}
+
+  {%- if s.layout == 'cover' -%}
+    <div class="hero__bg">
+      {%- if s.image_mobile != blank -%}
+        <picture>
+          <source media="(max-width: 749px)" srcset="{{ s.image_mobile | image_url: width: 800 }} 800w, {{ s.image_mobile | image_url: width: 1200 }} 1200w" sizes="100vw">
+          {%- render 'responsive-image', image: s.image, max: 2400, sizes: '100vw', class: 'hero__bg-img', eager: eager, art: 'none' -%}
+        </picture>
+      {%- else -%}
+        {%- render 'responsive-image', image: s.image, max: 2400, sizes: '100vw', class: 'hero__bg-img', eager: eager, art: 'none' -%}
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="hero__grid page-width">
+    <div class="hero__copy" data-reveal>
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'kicker' -%}
+            <p class="kicker" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+          {%- when 'heading' -%}
+            <{{ heading_tag }} class="display hero__title" {{ block.shopify_attributes }}>{{ block.settings.heading | escape }}</{{ heading_tag }}>
+          {%- when 'text' -%}
+            <div class="hero__text rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+          {%- when 'buttons' -%}
+            <div class="btn-row" {{ block.shopify_attributes }}>
+              {%- render 'button', label: block.settings.label_1, url: block.settings.link_1, style: 'solid' -%}
+              {%- render 'button', label: block.settings.label_2, url: block.settings.link_2, style: 'outline' -%}
+            </div>
+          {%- when 'stats' -%}
+            <dl class="hero__stats" {{ block.shopify_attributes }}>
+              {%- if block.settings.value_1 != blank -%}<div><dt class="visually-hidden">{{ block.settings.label_1 | escape }}</dt><dd><span class="hero__stat-num">{{ block.settings.value_1 | escape }}</span><span class="hero__stat-label" aria-hidden="true">{{ block.settings.label_1 | escape }}</span></dd></div>{%- endif -%}
+              {%- if block.settings.value_2 != blank -%}<div><dt class="visually-hidden">{{ block.settings.label_2 | escape }}</dt><dd><span class="hero__stat-num">{{ block.settings.value_2 | escape }}</span><span class="hero__stat-label" aria-hidden="true">{{ block.settings.label_2 | escape }}</span></dd></div>{%- endif -%}
+              {%- if block.settings.value_3 != blank -%}<div><dt class="visually-hidden">{{ block.settings.label_3 | escape }}</dt><dd><span class="hero__stat-num">{{ block.settings.value_3 | escape }}</span><span class="hero__stat-label" aria-hidden="true">{{ block.settings.label_3 | escape }}</span></dd></div>{%- endif -%}
+            </dl>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if s.layout != 'cover' -%}
+      <div class="hero__art" data-parallax>
+        {%- if s.layout == 'stage' -%}
+          <span class="hero__blob" aria-hidden="true"></span>
+          <span class="hero__glass" aria-hidden="true"></span>
+        {%- endif -%}
+        <div class="hero__frame">
+          {%- if s.image_mobile != blank and s.image != blank -%}
+            <picture>
+              <source media="(max-width: 749px)" srcset="{{ s.image_mobile | image_url: width: 800 }} 800w, {{ s.image_mobile | image_url: width: 1200 }} 1200w" sizes="90vw">
+              {%- render 'responsive-image', image: s.image, max: 1600, sizes: '(min-width: 990px) 45vw, 90vw', class: 'hero__img', eager: eager -%}
+            </picture>
+          {%- else -%}
+            {%- render 'responsive-image', image: s.image, max: 1600, sizes: '(min-width: 990px) 45vw, 90vw', class: 'hero__img', eager: eager, art: s.art, tone: 'blush' -%}
+          {%- endif -%}
+        </div>
+        {%- if s.layout == 'stage' and s.image_2 != blank -%}
+          <div class="hero__float-img float-y">{%- render 'responsive-image', image: s.image_2, max: 500, sizes: '160px' -%}</div>
+        {%- endif -%}
+        {%- if s.card_title != blank -%}
+          <div class="hero__card glass float-y">
+            <p class="hero__card-title">{{ s.card_title | escape }}</p>
+            {%- if s.card_text != blank -%}<p class="hero__card-text">{{ s.card_text | escape }}</p>{%- endif -%}
+          </div>
+        {%- endif -%}
+        {%- if s.badge != blank -%}<span class="hero__badge">{{ s.badge | escape }}</span>{%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "class": "section-hero",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "select", "id": "layout", "label": "Layout",
+      "options": [
+        { "value": "stage", "label": "2.5D layered stage" },
+        { "value": "split", "label": "Split image" },
+        { "value": "cover", "label": "Full background image" }
+      ],
+      "default": "stage"
+    },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "image_picker", "id": "image_mobile", "label": "Mobile image", "info": "Optional. Used below 750px wide." },
+    {
+      "type": "select", "id": "image_position", "label": "Image focal point",
+      "options": [
+        { "value": "center", "label": "Center" }, { "value": "top", "label": "Top" }, { "value": "bottom", "label": "Bottom" },
+        { "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select", "id": "art", "label": "Default art (no image)",
+      "options": [
+        { "value": "serum", "label": "Dropper serum" }, { "value": "jar", "label": "Cream jar" }, { "value": "pump", "label": "Pump bottle" },
+        { "value": "tube", "label": "Tube" }, { "value": "compact", "label": "Blush compact" }, { "value": "lipstick", "label": "Lipstick" }
+      ],
+      "default": "jar"
+    },
+    { "type": "header", "content": "2.5D stage details" },
+    { "type": "image_picker", "id": "image_2", "label": "Floating product cut-out", "info": "Transparent PNG floats over the stage." },
+    { "type": "text", "id": "badge", "label": "Tilted badge", "default": "New · Rose Dew" },
+    { "type": "text", "id": "card_title", "label": "Floating card title", "default": "Cloud-touch hydration" },
+    { "type": "text", "id": "card_text", "label": "Floating card text", "default": "Daily dew, without the weight." },
+    { "type": "header", "content": "Layout" },
+    {
+      "type": "select", "id": "content_position", "label": "Content position",
+      "options": [{ "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }],
+      "default": "left"
+    },
+    {
+      "type": "select", "id": "text_align", "label": "Text alignment",
+      "options": [{ "value": "start", "label": "Left" }, { "value": "center", "label": "Center" }],
+      "default": "start"
+    },
+    {
+      "type": "select", "id": "height", "label": "Height",
+      "options": [{ "value": "auto", "label": "Fit content" }, { "value": "md", "label": "Medium" }, { "value": "lg", "label": "Large" }, { "value": "full", "label": "Full screen" }],
+      "default": "auto"
+    },
+    { "type": "range", "id": "overlay", "label": "Image overlay (full background layout)", "min": 0, "max": 80, "step": 5, "unit": "%", "default": 25 },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "blocks": [
+    { "type": "kicker", "name": "Kicker", "limit": 1, "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "The ritual edit" }] },
+    { "type": "heading", "name": "Heading", "limit": 1, "settings": [{ "type": "text", "id": "heading", "label": "Heading", "default": "Skin, lit from within." }] },
+    { "type": "text", "name": "Text", "limit": 1, "settings": [{ "type": "richtext", "id": "text", "label": "Text", "default": "<p>Layered skincare and soft-focus colour for the little rituals that make every day feel luminous.</p>" }] },
+    {
+      "type": "buttons", "name": "Buttons", "limit": 1,
+      "settings": [
+        { "type": "text", "id": "label_1", "label": "Primary button", "default": "Shop the collection" },
+        { "type": "url", "id": "link_1", "label": "Primary link" },
+        { "type": "text", "id": "label_2", "label": "Secondary button", "default": "Discover the serum" },
+        { "type": "url", "id": "link_2", "label": "Secondary link" }
+      ]
+    },
+    {
+      "type": "stats", "name": "Stats", "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Use real, verifiable figures only." },
+        { "type": "text", "id": "value_1", "label": "Stat 1 value", "default": "98%" },
+        { "type": "text", "id": "label_1", "label": "Stat 1 label", "default": "would recommend" },
+        { "type": "text", "id": "value_2", "label": "Stat 2 value", "default": "4.9/5" },
+        { "type": "text", "id": "label_2", "label": "Stat 2 label", "default": "community rating" },
+        { "type": "text", "id": "value_3", "label": "Stat 3 value" },
+        { "type": "text", "id": "label_3", "label": "Stat 3 label" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Hero", "blocks": [{ "type": "kicker" }, { "type": "heading" }, { "type": "text" }, { "type": "buttons" }, { "type": "stats" }] }
+  ]
+}
+{% endschema %}

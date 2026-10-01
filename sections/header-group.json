@@ -1,0 +1,31 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "blocks": {
+        "a1": { "type": "announcement", "settings": { "text": "A luminous ritual, delivered with a complimentary sample", "link": "", "icon": "sparkle" } },
+        "a2": { "type": "announcement", "settings": { "text": "Free shipping on orders over $75", "link": "", "icon": "truck" } }
+      },
+      "block_order": ["a1", "a2"],
+      "settings": { "enable": true, "color_scheme": "scheme-6", "interval": 5 }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu",
+        "logo_position": "left",
+        "sticky": true,
+        "cart_style": "icon",
+        "show_search": true,
+        "show_account": true,
+        "show_wishlist": false,
+        "color_scheme": "scheme-1",
+        "menu_scheme": "scheme-2",
+        "sheet_note": "Two complimentary samples with every order."
+      }
+    }
+  },
+  "order": ["announcement", "header"]
+}

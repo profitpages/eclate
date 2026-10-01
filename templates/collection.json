@@ -1,0 +1,146 @@
+{
+  "sections": {
+    "banner": {
+      "type": "collection-hero",
+      "settings": {
+        "kicker": "The complete edit",
+        "heading": "Beauty, considered.",
+        "text": "<p>Skin-loving colour, care, and sensorial formulas designed to turn your everyday into a small, beautiful ritual.</p>",
+        "show_art": true,
+        "pill": "Ritual ready",
+        "show_count": true,
+        "show_breadcrumb": true,
+        "color_scheme": "scheme-4",
+        "section_scheme": "scheme-1"
+      }
+    },
+    "grid": {
+      "type": "main-collection",
+      "settings": {
+        "per_page": 12,
+        "columns": 3,
+        "columns_mobile": "2",
+        "load_more": true,
+        "note": "Made for the moment",
+        "enable_filters": true,
+        "open_filters": 3,
+        "enable_sorting": true,
+        "card_style": "stage",
+        "image_ratio": "square",
+        "show_vendor": false,
+        "show_quick_add": true,
+        "filter_scheme": "scheme-2",
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "tab_1": {
+          "type": "tab",
+          "settings": {
+            "label": "All"
+          }
+        },
+        "tab_2": {
+          "type": "tab",
+          "settings": {
+            "label": "Skincare"
+          }
+        },
+        "tab_3": {
+          "type": "tab",
+          "settings": {
+            "label": "Makeup"
+          }
+        },
+        "tab_4": {
+          "type": "tab",
+          "settings": {
+            "label": "Body"
+          }
+        },
+        "promo_5": {
+          "type": "promo",
+          "settings": {
+            "position": 4,
+            "kicker": "Our ingredient philosophy",
+            "heading": "Formulas that feel like a deep breath.",
+            "text": "<p>Intelligently chosen botanicals, modern actives, and a focus on skin comfort.</p>",
+            "link_label": "Meet the ingredients",
+            "color_scheme": "scheme-8"
+          }
+        }
+      },
+      "block_order": [
+        "tab_1",
+        "tab_2",
+        "tab_3",
+        "tab_4",
+        "promo_5"
+      ]
+    },
+    "recent": {
+      "type": "recently-viewed",
+      "settings": {
+        "kicker": "Continue your ritual",
+        "heading": "Recently viewed",
+        "link_label": "Shop all",
+        "limit": 4,
+        "color_scheme": "scheme-4"
+      }
+    },
+    "promos": {
+      "type": "promo-banner",
+      "settings": {
+        "kicker": "Chosen for you",
+        "heading": "A little more to love",
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "promo_1": {
+          "type": "promo",
+          "settings": {
+            "layout": "side",
+            "kicker": "Skin reset",
+            "heading": "Comforting essentials for sensitive days.",
+            "link_label": "Discover skincare",
+            "color_scheme": "scheme-5"
+          }
+        },
+        "promo_2": {
+          "type": "promo",
+          "settings": {
+            "layout": "side",
+            "kicker": "After dark",
+            "heading": "The evening edit, rich in replenishment.",
+            "link_label": "Explore night care",
+            "color_scheme": "scheme-3"
+          }
+        }
+      },
+      "block_order": [
+        "promo_1",
+        "promo_2"
+      ]
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "layout": "band",
+        "kicker": "Notes from the studio",
+        "heading": "Your invitation to slow beauty.",
+        "text": "<p>Receive considered rituals, early access, and thoughtful beauty notes in your inbox.</p>",
+        "button_label": "Join us",
+        "consent": "Unsubscribe anytime. We never share your email.",
+        "decor": false,
+        "color_scheme": "scheme-7",
+        "section_scheme": "scheme-1"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "grid",
+    "recent",
+    "promos",
+    "newsletter"
+  ]
+}

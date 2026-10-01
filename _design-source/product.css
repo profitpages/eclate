@@ -1,0 +1,34 @@
+
+    :root {
+      --ink:#241e1b; --paper:#fbf7ef; --rose:#e98c75; --clay:#bd6251;
+      --moss:#526157; --line:#e7ddd0; --blush:#f6ddd5; --gold:#c79455;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; width:100%; font-family:"Work Sans",sans-serif; color:var(--ink); background:var(--paper); }
+    .editorial { font-family:"Fraunces",serif; }
+    .grain { position:relative; overflow:hidden; }
+    .grain:after { content:""; position:absolute; inset:0; opacity:.18; pointer-events:none; background-image:radial-gradient(#402c2522 .65px,transparent .65px); background-size:5px 5px; }
+    .soft-shadow { box-shadow:0 22px 55px rgba(69,39,29,.12), 0 4px 12px rgba(69,39,29,.06); }
+    .lift { box-shadow:10px 12px 0 rgba(233,140,117,.2), 0 18px 45px rgba(69,39,29,.12); }
+    .gallery-slide { display:none; }
+    .gallery-slide.active { display:block; animation:fade .35s ease; }
+    @keyframes fade { from{opacity:.25;transform:scale(.985)} to{opacity:1;transform:scale(1)} }
+    @keyframes drift { 0%,100%{transform:translateY(0) rotate(-7deg)} 50%{transform:translateY(-10px) rotate(-2deg)} }
+    .floating { animation:drift 5s ease-in-out infinite; }
+    .thumb.active { outline:2px solid var(--ink); outline-offset:3px; }
+    .accordion-panel { display:grid; grid-template-rows:0fr; transition:grid-template-rows .3s ease; }
+    .accordion-panel > div { overflow:hidden; }
+    .accordion-item.open .accordion-panel { grid-template-rows:1fr; }
+    .accordion-item.open .accordion-plus { transform:rotate(45deg); }
+    .accordion-plus { transition:transform .2s ease; }
+    .heart-active { fill:var(--clay); stroke:var(--clay); }
+    .toast { transform:translateY(150%); transition:transform .35s cubic-bezier(.2,.8,.2,1); }
+    .toast.show { transform:translateY(0); }
+    .lightbox { display:none; }
+    .lightbox.show { display:flex; }
+    .review-bar span { display:block; height:100%; background:var(--clay); border-radius:999px; }
+    button:focus-visible, a:focus-visible { outline:3px solid var(--rose); outline-offset:3px; }
+    @media (max-width:767px) { .desktop-nav { display:none; } .mobile-sticky { display:flex; } }
+    @media (min-width:768px) { .mobile-sticky { display:none; } }
+  

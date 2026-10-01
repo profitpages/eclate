@@ -1,0 +1,52 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-list-collections",
+      "settings": {
+        "kicker": "Shop by ritual",
+        "heading": "All collections",
+        "style": "arch",
+        "columns": 4,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "promos": {
+      "type": "promo-banner",
+      "settings": {
+        "kicker": "Chosen for you",
+        "heading": "A little more to love",
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "promo_1": {
+          "type": "promo",
+          "settings": {
+            "layout": "side",
+            "kicker": "Skin reset",
+            "heading": "Comforting essentials for sensitive days.",
+            "link_label": "Discover skincare",
+            "color_scheme": "scheme-5"
+          }
+        },
+        "promo_2": {
+          "type": "promo",
+          "settings": {
+            "layout": "side",
+            "kicker": "After dark",
+            "heading": "The evening edit, rich in replenishment.",
+            "link_label": "Explore night care",
+            "color_scheme": "scheme-3"
+          }
+        }
+      },
+      "block_order": [
+        "promo_1",
+        "promo_2"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "promos"
+  ]
+}

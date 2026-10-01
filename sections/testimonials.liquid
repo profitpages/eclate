@@ -1,0 +1,63 @@
+{%- assign s = section.settings -%}
+<section class="section color-{{ s.color_scheme }}">
+  <div class="page-width">
+    {%- render 'section-heading', kicker: s.kicker, title: s.heading, text: s.text -%}
+    <ul class="quotes" role="list">
+      {%- for block in section.blocks -%}
+        <li class="quote" data-reveal {{ block.shopify_attributes }}>
+          <figure>
+            {%- if block.settings.stars > 0 -%}
+              <span class="quote__stars" aria-label="{{ 'products.rating' | t: rating: block.settings.stars, max: 5 }}">{%- for i in (1..block.settings.stars) -%}★{%- endfor -%}</span>
+            {%- endif -%}
+            <blockquote class="quote__text">“{{ block.settings.quote | escape }}”</blockquote>
+            <figcaption class="quote__by">
+              {%- if block.settings.avatar != blank -%}{{ block.settings.avatar | image_url: width: 96 | image_tag: loading: 'lazy', alt: '', width: 40, height: 40, class: 'quote__avatar' }}{%- endif -%}
+              — {{ block.settings.author | escape }}{%- if block.settings.detail != blank -%}, <span>{{ block.settings.detail | escape }}</span>{%- endif -%}
+            </figcaption>
+            {%- if block.settings.product != blank -%}
+              <a class="quote__product" href="{{ block.settings.product.url }}">{{ 'sections.reviewed' | t }}: {{ block.settings.product.title | escape }}</a>
+            {%- endif -%}
+          </figure>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "class": "section-testimonials",
+  "max_blocks": 9,
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Kind words, real glow" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A little love from the community." },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "paragraph", "content": "Please use genuine customer quotes. For product reviews, use the Reviews section with your review app." },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial", "name": "Testimonial",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "My skin feels calm, hydrated, and never weighed down." },
+        { "type": "text", "id": "author", "label": "Name", "default": "Maya" },
+        { "type": "text", "id": "detail", "label": "Detail", "default": "verified customer" },
+        { "type": "image_picker", "id": "avatar", "label": "Photo" },
+        { "type": "range", "id": "stars", "label": "Stars", "min": 0, "max": 5, "step": 1, "default": 5 },
+        { "type": "product", "id": "product", "label": "Product (optional)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "testimonial" },
+        { "type": "testimonial", "settings": { "quote": "The textures make my evening routine feel like a treat.", "author": "Anika" } },
+        { "type": "testimonial", "settings": { "quote": "Soft colour, easy skincare, and a lovely everyday glow.", "author": "Leena" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

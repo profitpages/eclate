@@ -1,0 +1,129 @@
+{%- comment -%}
+  Product card — all data from Shopify. Section-level options override theme defaults.
+  Usage:
+    {% render 'product-card', product: product, style: 'soft', ratio: 'portrait',
+       show_vendor: nil, show_rating: nil, show_badges: nil, show_quick_add: nil,
+       show_secondary: nil, lazy: true, section_id: section.id, sizes: '...' %}
+  Placeholder card when product is blank (theme editor onboarding).
+{%- endcomment -%}
+{%- liquid
+  assign card_style = style | default: settings.card_style
+  assign card_ratio = ratio | default: settings.card_ratio
+  case card_ratio
+    when 'square'
+      assign ratio_value = 1
+    when 'landscape'
+      assign ratio_value = 1.2
+    else
+      assign ratio_value = 0.8
+  endcase
+
+  assign sv = settings.card_show_vendor
+  if show_vendor != nil
+    assign sv = show_vendor
+  endif
+  assign sr = settings.card_show_rating
+  if show_rating != nil
+    assign sr = show_rating
+  endif
+  assign sb = settings.card_show_badges
+  if show_badges != nil
+    assign sb = show_badges
+  endif
+  assign sq = settings.card_show_quick_add
+  if show_quick_add != nil
+    assign sq = show_quick_add
+  endif
+  assign s2 = settings.card_show_secondary
+  if show_secondary != nil
+    assign s2 = show_secondary
+  endif
+
+  assign img_sizes = sizes | default: '(min-width: 1100px) 22vw, (min-width: 750px) 30vw, 46vw'
+  assign load = 'lazy'
+  if lazy == false
+    assign load = 'eager'
+  endif
+  assign arts = 'serum,jar,tube,lipstick,compact,pump' | split: ','
+  assign tones = 'blush,lilac,peach,sand,blush,lilac' | split: ','
+  assign art_i = product.id | default: 0 | modulo: 6
+  assign kind = product.metafields.custom.subtitle.value | default: product.type
+-%}
+
+<article class="card card--{{ card_style }}" data-reveal>
+  <div class="card__media" style="--ratio: {{ ratio_value }};">
+    {%- if product != blank -%}
+      <a class="card__media-link" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+        {%- if product.featured_media -%}
+          {%- assign card_alt = product.featured_media.alt | default: product.title -%}
+          {{ product.featured_media | image_url: width: 900 | image_tag:
+            loading: load,
+            widths: '260, 360, 480, 640, 900',
+            sizes: img_sizes,
+            alt: card_alt,
+            class: 'card__img'
+          }}
+          {%- if s2 and product.media[1] -%}
+            {{ product.media[1] | image_url: width: 900 | image_tag:
+              loading: 'lazy',
+              widths: '260, 360, 480, 640, 900',
+              sizes: img_sizes,
+              alt: '',
+              class: 'card__img card__img--alt'
+            }}
+          {%- endif -%}
+        {%- else -%}
+          <div class="card__art">{%- render 'cosmetic-art', name: arts[art_i], tone: tones[art_i] -%}</div>
+        {%- endif -%}
+      </a>
+      {%- if sb -%}
+        <div class="card__badges">{%- render 'badge', product: product -%}</div>
+      {%- endif -%}
+      {%- render 'wishlist-button', product: product, class: 'card__wish' -%}
+    {%- else -%}
+      <div class="card__art">{%- render 'cosmetic-art', name: arts[art_i], tone: tones[art_i] -%}</div>
+    {%- endif -%}
+  </div>
+
+  <div class="card__info">
+    {%- if settings.card_show_type and kind != blank -%}
+      <p class="card__kind">{{ kind | escape }}</p>
+    {%- endif -%}
+    {%- if sv and product.vendor != blank -%}
+      <p class="card__vendor">{{ product.vendor | escape }}</p>
+    {%- endif -%}
+    <h3 class="card__title">
+      {%- if product != blank -%}
+        <a class="card__link" href="{{ product.url }}">{{ product.title | escape }}</a>
+      {%- else -%}
+        {{ 'products.placeholder_title' | t }}
+      {%- endif -%}
+    </h3>
+    <div class="card__meta">
+      {%- if product != blank -%}
+        {%- render 'price', product: product -%}
+      {%- else -%}
+        <div class="price"><span class="price__now">{{ 4200 | money }}</span></div>
+      {%- endif -%}
+      {%- if sr and product != blank -%}{%- render 'rating', product: product, show_count: true, size: 'sm' -%}{%- endif -%}
+    </div>
+
+    {%- if sq and product != blank -%}
+      {%- if product.available == false -%}
+        <button class="card__add" type="button" disabled>{{ 'products.sold_out' | t }}</button>
+      {%- elsif product.has_only_default_variant -%}
+        {%- assign card_form_id = 'card-' | append: section_id | append: '-' | append: product.id -%}
+        {%- form 'product', product, id: card_form_id, class: 'card__form', data-product-form: '', novalidate: 'novalidate' -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <button class="card__add" type="submit" name="add">
+            <span>{{ 'products.quick_add' | t }}</span>
+          </button>
+        {%- endform -%}
+      {%- else -%}
+        <button class="card__add" type="button" data-quick-add="{{ product.url | split: '?' | first }}" aria-haspopup="dialog">
+          <span>{{ 'products.choose_options' | t }}</span>
+        </button>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</article>

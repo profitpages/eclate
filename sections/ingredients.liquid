@@ -1,0 +1,81 @@
+{{ 'section-ingredients.css' | asset_url | stylesheet_tag }}
+{%- assign s = section.settings -%}
+{%- assign arts = 'swatch,serum,jar,pump,tube,compact' | split: ',' -%}
+{%- assign tones = 'lilac,peach,sand,blush,lilac,peach' | split: ',' -%}
+<section class="section color-{{ s.color_scheme }}">
+  <div class="page-width">
+    {%- render 'section-heading', kicker: s.kicker, title: s.heading, text: s.text -%}
+    {%- if s.use_metafield and product and product.metafields.custom.ingredients != blank -%}
+      <div class="ingredients__full rte">{{ product.metafields.custom.ingredients | metafield_tag }}</div>
+    {%- endif -%}
+    <ul class="ingredients ingredients--{{ s.style }}" role="list" style="--cols: {{ s.columns }};">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        {%- assign ai = forloop.index0 | modulo: 6 -%}
+        <li class="ingredient" data-reveal {{ block.shopify_attributes }}>
+          <div class="ingredient__media">
+            {%- render 'responsive-image', image: b.image, max: 700, sizes: '(min-width: 990px) 24vw, 46vw', class: 'ingredient__img', art: arts[ai], tone: tones[ai] -%}
+            {%- if b.benefit != blank -%}<span class="ingredient__tag">{{ b.benefit | escape }}</span>{%- endif -%}
+          </div>
+          <div class="ingredient__body">
+            <h3 class="ingredient__name">{{ b.name | escape }}</h3>
+            {%- if b.text != blank -%}<p class="ingredient__text">{{ b.text | escape }}</p>{%- endif -%}
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ingredients",
+  "class": "section-ingredients",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Inside the formula" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Good ingredients, beautifully simple." },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "checkbox", "id": "use_metafield", "label": "On product pages, also show the full ingredient list", "default": false, "info": "Reads the product metafield custom.ingredients (rich or multi-line text)." },
+    {
+      "type": "select", "id": "style", "label": "Card style",
+      "options": [{ "value": "soft", "label": "Soft image cards" }, { "value": "lift", "label": "Lifted cards (offset shadow)" }],
+      "default": "soft"
+    },
+    { "type": "range", "id": "columns", "label": "Columns (desktop)", "min": 2, "max": 4, "step": 1, "default": 4 },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image or icon" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Hyaluronic acid" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "A hydration-loving humectant for a cushiony, dewy feel." },
+        { "type": "text", "id": "benefit", "label": "Benefit tag", "default": "Hydrates" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredients",
+      "blocks": [
+        { "type": "ingredient", "settings": { "name": "Hyaluronic acid", "text": "A hydration-loving humectant for a cushiony, dewy feel.", "benefit": "Hydrates" } },
+        { "type": "ingredient", "settings": { "name": "Niacinamide", "text": "A versatile favourite for a more balanced-looking complexion.", "benefit": "Balances" } },
+        { "type": "ingredient", "settings": { "name": "Peptides", "text": "Skin-conditioning care for a soft, supple finish.", "benefit": "Plumps" } },
+        { "type": "ingredient", "settings": { "name": "Botanical extracts", "text": "Plant-inspired accents that make every ritual feel special.", "benefit": "Soothes" } }
+      ]
+    },
+    {
+      "name": "Formula ingredients",
+      "settings": { "kicker": "Formula intelligence", "heading": "High-performance care, made soft enough for every day.", "style": "lift", "columns": 3, "color_scheme": "scheme-5" },
+      "blocks": [
+        { "type": "ingredient", "settings": { "name": "Peptide complex", "text": "A precise blend that supports the look of springy, resilient skin.", "benefit": "Firms" } },
+        { "type": "ingredient", "settings": { "name": "Hyaluronic acid", "text": "Three molecular weights cushion skin with long-lasting hydration.", "benefit": "Hydrates" } },
+        { "type": "ingredient", "settings": { "name": "Vitamin C", "text": "A gentle brightening antioxidant for a more even, lit-from-within finish.", "benefit": "Brightens" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

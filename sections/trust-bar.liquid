@@ -1,0 +1,53 @@
+{%- assign s = section.settings -%}
+<section class="trust color-{{ s.color_scheme }}">
+  <div class="page-width">
+    <ul class="trust__list{% if s.card %} trust__list--card{% endif %}" role="list">
+      {%- for block in section.blocks -%}
+        <li class="trust__item" {{ block.shopify_attributes }}>
+          {%- render 'icon', name: block.settings.icon, size: 18 -%}
+          <span>{{ block.settings.text | escape }}</span>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust bar",
+  "class": "section-trust",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "checkbox", "id": "card", "label": "Show inside a card", "default": true },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "blocks": [
+    {
+      "type": "item", "name": "Item",
+      "settings": [
+        {
+          "type": "select", "id": "icon", "label": "Icon",
+          "options": [
+            { "value": "rabbit", "label": "Cruelty-free" }, { "value": "leaf", "label": "Leaf" }, { "value": "shield", "label": "Secure" },
+            { "value": "truck", "label": "Shipping" }, { "value": "return", "label": "Returns" }, { "value": "gift", "label": "Gift" },
+            { "value": "sparkle", "label": "Sparkle" }, { "value": "recycle", "label": "Recyclable" }, { "value": "flask", "label": "Tested" }
+          ],
+          "default": "rabbit"
+        },
+        { "type": "text", "id": "text", "label": "Text", "default": "Cruelty-free always" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust bar",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "rabbit", "text": "Cruelty-free always" } },
+        { "type": "item", "settings": { "icon": "leaf", "text": "Thoughtful ingredients" } },
+        { "type": "item", "settings": { "icon": "shield", "text": "Secure checkout" } },
+        { "type": "item", "settings": { "icon": "truck", "text": "Fast, considered shipping" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

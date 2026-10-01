@@ -1,0 +1,23 @@
+{%- comment -%}
+  Quantity + Add to bag + optional Buy now. Real Shopify product form.
+  Usage: {% render 'product-form', product: product, form_id: 'x', variant: v, show_buy_now: true, show_wishlist: true, show_qty: true %}
+{%- endcomment -%}
+<div class="buy">
+  {%- form 'product', product, id: form_id, class: 'buy__form', data-product-form: '', novalidate: 'novalidate' -%}
+    <input type="hidden" name="id" value="{{ variant.id }}" data-variant-id>
+    <div class="buy__row">
+      {%- if show_qty -%}
+        {%- assign qty_id = 'Qty-' | append: form_id -%}
+        {%- render 'quantity-input', id: qty_id, value: 1, min: 1, label: product.title -%}
+      {%- endif -%}
+      <button type="submit" name="add" class="btn btn--accent btn--grow" data-add-button{% unless variant.available %} disabled{% endunless %}>
+        {%- render 'icon', name: 'bag', size: 18 -%}
+        <span data-add-label>{%- if variant.available -%}{{ 'products.add_to_cart' | t }}{%- else -%}{{ 'products.sold_out' | t }}{%- endif -%}</span>
+      </button>
+    </div>
+    {%- if show_buy_now -%}
+      <div class="buy__dynamic">{{ form | payment_button }}</div>
+    {%- endif -%}
+    <p class="form-msg form-msg--error" role="alert" hidden data-form-error></p>
+  {%- endform -%}
+</div>

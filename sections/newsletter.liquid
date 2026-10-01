@@ -1,0 +1,52 @@
+{%- assign s = section.settings -%}
+<section class="section{% if s.layout == 'band' %} newsletter-band color-{{ s.color_scheme }}{% else %} color-{{ s.section_scheme }}{% endif %}">
+  <div class="page-width">
+    <div class="newsletter newsletter--{{ s.layout }}{% if s.layout == 'panel' %} color-{{ s.color_scheme }}{% endif %}">
+      {%- if s.decor -%}{%- render 'decor', preset: 'band' -%}{%- endif -%}
+      <div class="newsletter__copy">
+        {%- if s.kicker != blank -%}<p class="kicker">{{ s.kicker | escape }}</p>{%- endif -%}
+        {%- if s.heading != blank -%}<h2 class="h2">{{ s.heading | escape }}</h2>{%- endif -%}
+        {%- if s.text != blank -%}<div class="rte newsletter__text">{{ s.text }}</div>{%- endif -%}
+      </div>
+      {%- assign nl_id = 'Newsletter-' | append: section.id -%}
+      {%- form 'customer', id: nl_id, class: 'nl-form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        {%- if form.posted_successfully? -%}
+          <p class="form-msg form-msg--ok" role="status" tabindex="-1" autofocus>{% render 'icon', name: 'check', size: 16 %} {{ 'newsletter.success' | t }}</p>
+        {%- else -%}
+          <div class="nl-form__field">
+            <label class="visually-hidden" for="{{ nl_id }}-email">{{ 'newsletter.email_label' | t }}</label>
+            <input class="input" id="{{ nl_id }}-email" type="email" name="contact[email]" autocomplete="email" required placeholder="{{ 'newsletter.email_label' | t }}"{% if form.errors %} aria-invalid="true" aria-describedby="{{ nl_id }}-error"{% endif %}>
+            <button class="btn btn--solid" type="submit">{{ s.button_label | escape }}</button>
+          </div>
+          {%- if form.errors -%}<p class="form-msg form-msg--error" id="{{ nl_id }}-error">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>{%- endif -%}
+          {%- if s.consent != blank -%}<p class="nl-form__consent">{{ s.consent | escape }}</p>{%- endif -%}
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "class": "section-newsletter",
+  "settings": [
+    {
+      "type": "select", "id": "layout", "label": "Layout",
+      "options": [{ "value": "panel", "label": "Rounded panel" }, { "value": "band", "label": "Full-width band (centered)" }],
+      "default": "panel"
+    },
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "A little something for you" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A softer kind of inbox." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Get a welcome offer and notes on rituals, newness, and thoughtful beauty.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Join the list" },
+    { "type": "text", "id": "consent", "label": "Small print", "default": "Unsubscribe anytime. We never share your email." },
+    { "type": "checkbox", "id": "decor", "label": "Decorative orbs", "default": true },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Panel / band color scheme", "default": "scheme-6" },
+    { "type": "color_scheme", "id": "section_scheme", "label": "Section color scheme", "default": "scheme-1" },
+    { "type": "paragraph", "content": "Subscribers appear in Customers with marketing consent and the 'newsletter' tag." }
+  ],
+  "presets": [{ "name": "Newsletter" }]
+}
+{% endschema %}

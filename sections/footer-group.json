@@ -1,0 +1,24 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "explore": { "type": "menu", "settings": { "heading": "Explore", "menu": "main-menu" } },
+        "support": { "type": "menu", "settings": { "heading": "Support", "menu": "footer" } },
+        "newsletter": { "type": "newsletter", "settings": { "heading": "Stay luminous", "text": "A small note from the studio, plus early access to new rituals." } }
+      },
+      "block_order": ["explore", "support", "newsletter"],
+      "settings": {
+        "color_scheme": "scheme-6",
+        "blurb": "<p>High-touch formulas for your real, luminous life.</p>",
+        "show_social": true,
+        "copyright": "Made for the glow in between.",
+        "show_policies": true,
+        "show_payment": true
+      }
+    }
+  },
+  "order": ["footer"]
+}

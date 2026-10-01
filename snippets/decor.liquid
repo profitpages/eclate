@@ -1,0 +1,20 @@
+{%- comment -%}
+  Decorative orbs for the 2.5D background layer. Hidden when "Show decorative orbs" is off.
+  Usage: {% render 'decor', preset: 'hero' %}  presets: hero, corner, band, product
+{%- endcomment -%}
+{%- if settings.decor_enable -%}
+  <div class="decor decor--{{ preset | default: 'corner' }}" aria-hidden="true">
+    {%- case preset -%}
+      {%- when 'hero' -%}
+        <span class="orb orb--1"></span>
+        <span class="orb orb--2"></span>
+      {%- when 'band' -%}
+        <span class="orb orb--3"></span>
+        <span class="orb orb--1"></span>
+      {%- when 'product' -%}
+        <span class="orb orb--3 orb--float"></span>
+      {%- else -%}
+        <span class="orb orb--2"></span>
+    {%- endcase -%}
+  </div>
+{%- endif -%}
