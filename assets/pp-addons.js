@@ -242,5 +242,23 @@
   document.addEventListener("DOMContentLoaded", function () { startTimers(); });
   if (document.readyState !== "loading") startTimers();
 
+  // The theme re-renders its cart drawer after its own cart changes (add to bag,
+  // quantity, remove) without telling us. When fresh add-on markup appears,
+  // start its timer and check the free gift against the new cart.
+  var watchTimer;
+  new MutationObserver(function (mutations) {
+    var fresh = mutations.some(function (m) {
+      return Array.prototype.some.call(m.addedNodes, function (n) {
+        return n.nodeType === 1 && (n.matches("[data-pp-timer], [data-pp-gift]") || n.querySelector("[data-pp-timer], [data-pp-gift]"));
+      });
+    });
+    if (!fresh) return;
+    clearTimeout(watchTimer);
+    watchTimer = setTimeout(function () {
+      startTimers();
+      if (document.querySelector("[data-pp-gift]") && !giftBusy) cartGet().then(syncGift).catch(function () {});
+    }, 150);
+  }).observe(document.documentElement, { childList: true, subtree: true });
+
   window.PPAddons = { cartAdd: cartAdd, refreshed: refreshed, startTimers: startTimers, syncGift: syncGift, version: 1 };
 })();

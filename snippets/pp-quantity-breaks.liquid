@@ -11,7 +11,8 @@
 -%}
 {%- if addons.active and qb.tiers.size > 1 -%}
   <fieldset class="pp-qb" data-pp-qb data-handle="{{ product.handle }}" data-form="{{ form_id }}">
-    <legend class="pp-qb__legend kicker">{{ heading | default: 'addons.qb_heading' | t }}</legend>
+    {%- if heading == blank -%}{%- assign heading = 'addons.qb_heading' | t -%}{%- endif -%}
+    <legend class="pp-qb__legend kicker">{{ heading | escape }}</legend>
     <div class="pp-qb__tiers">
       {%- for tier in qb.tiers -%}
         {%- liquid

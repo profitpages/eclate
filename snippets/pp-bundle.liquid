@@ -26,7 +26,8 @@
   -%}
   <div class="pp-bundle panel-card" data-pp-bundle data-handle="{{ product.handle }}">
     <div class="pp-bundle__head">
-      <p class="kicker">{{ heading | default: 'addons.bundle_kicker' | t }}</p>
+      {%- if heading == blank -%}{%- assign heading = 'addons.bundle_kicker' | t -%}{%- endif -%}
+      <p class="kicker">{{ heading | escape }}</p>
       {%- if off > 0 -%}
         <span class="badge badge--sale">
           {%- if offer.discountType == 'fixed' -%}{%- assign save_label = off | money_without_trailing_zeros -%}{%- else -%}{%- assign save_label = value | append: '%' -%}{%- endif -%}
@@ -37,6 +38,7 @@
     <ul class="pp-bundle__items" role="list">
       <li class="pp-bundle__item" data-pp-bundle-row>
         <input class="visually-hidden" type="checkbox" data-pp-bundle-item value="{{ variant.id }}" checked tabindex="-1" aria-hidden="true">
+        <span class="pp-bundle__lock" aria-hidden="true">{%- render 'icon', name: 'check', size: 14 -%}</span>
         <span class="pp-bundle__thumb">{%- if variant.featured_image or product.featured_image -%}{{ variant.featured_image | default: product.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}{%- endif -%}</span>
         <span class="pp-bundle__name"><span class="pp-bundle__this">{{ 'addons.bundle_this' | t }}</span>{{ product.title | escape }}</span>
         <span class="pp-bundle__price">{{ variant.price | money }}</span>
@@ -45,16 +47,15 @@
         {%- assign cv = c.selected_or_first_available_variant -%}
         {%- assign item_id = 'PPB-' | append: product.id | append: '-' | append: forloop.index -%}
         <li class="pp-bundle__item" data-pp-bundle-row>
-          <span class="pp-bundle__plus" aria-hidden="true">+</span>
           <input class="pp-bundle__check" type="checkbox" id="{{ item_id }}" data-pp-bundle-item value="{{ cv.id }}" checked{% unless cv.available %} disabled{% endunless %}>
           <label class="pp-bundle__thumb" for="{{ item_id }}">{%- if c.featured_image -%}{{ c.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: c.featured_image.alt | escape }}{%- endif -%}</label>
           <span class="pp-bundle__name">
             <a href="{{ c.url }}">{{ c.title | escape }}</a>
-            {%- unless c.has_only_default_variant -%}
+            {%- if c.variants.size > 1 -%}
               <select class="pp-bundle__variant input" data-pp-bundle-variant aria-label="{{ 'products.choose_options_for' | t: title: c.title | escape }}">
                 {%- for v in c.variants -%}<option value="{{ v.id }}"{% if v == cv %} selected{% endif %}{% unless v.available %} disabled{% endunless %}>{{ v.title | escape }}</option>{%- endfor -%}
               </select>
-            {%- endunless -%}
+            {%- endif -%}
           </span>
           <span class="pp-bundle__price">{{ cv.price | money }}</span>
         </li>
