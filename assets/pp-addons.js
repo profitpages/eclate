@@ -28,11 +28,15 @@
  *     <select data-pp-bundle-variant> (optional, per item: replaces that item's variant)
  *     <button data-pp-bundle-add>Add bundle</button>
  *   </div>
+ *   Live total (optional): give items and variant options data-pp-price (cents, namespaced so themes that update [data-price] leave it alone),
+ *   the wrapper data-discount-type / data-discount-value / data-money-format,
+ *   and mark [data-pp-bundle-total], [data-pp-bundle-compare], [data-pp-bundle-count].
+ *   The discount shows once two or more items are checked, as at checkout.
  *
  * Reviews "load more":
  *   <div data-pp-reviews data-product-id="{{ product.id }}">
  *     <div data-pp-reviews-list> ... </div>
- *     <template data-pp-review-template> markup with [data-field="author|body|title|date|country|rating"]
+ *     <template data-pp-review-template> markup with [data-field="author|initial|body|title|date|country|rating"]
  *       and optionally [data-field="stars"] (gets data-rating) and [data-field="photos"] </template>
  *     <button data-pp-reviews-more>More reviews</button>
  *   </div>
@@ -86,8 +90,18 @@
     e.preventDefault();
     e.stopImmediatePropagation();
     var variantId = idInput.value;
+    // Keep what else the form carries: a subscription plan, line-item properties (engraving, notes).
+    var item = { id: variantId, quantity: qty };
+    var fd = new FormData(form);
+    if (fd.get("selling_plan")) item.selling_plan = fd.get("selling_plan");
+    var props = {};
+    fd.forEach(function (v, k) {
+      var m = k.match(/^properties\[(.+)\]$/);
+      if (m && typeof v === "string" && v !== "") props[m[1]] = v;
+    });
+    if (Object.keys(props).length) item.properties = props;
     form.setAttribute("aria-busy", "true");
-    cartAdd([{ id: variantId, quantity: qty }])
+    cartAdd([item])
       .then(function (added) {
         if (!discounted) return added;
         return proxy("/quantity-breaks/" + encodeURIComponent(qb.getAttribute("data-handle")), { variantId: variantId, quantity: qty })
@@ -100,12 +114,57 @@
   }, true);
 
   // ── Bundles ────────────────────────────────────────────────────────────────
+  function formatMoney(cents, format) {
+    var fmt = format || "${{amount}}";
+    // Shopify's money formats: thousands separator, decimal mark, decimals or none.
+    var number = function (thousands, decimal, decimals) {
+      var parts = (cents / 100).toFixed(decimals ? 2 : 0).split(".");
+      return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousands) + (decimals ? decimal + parts[1] : "");
+    };
+    return fmt.replace(/\{\{\s*(\w+)\s*\}\}/, function (_, key) {
+      if (key === "amount_no_decimals") return number(",", ".", false);
+      if (key === "amount_with_comma_separator") return number(".", ",", true);
+      if (key === "amount_no_decimals_with_comma_separator") return number(".", ",", false);
+      if (key === "amount_with_apostrophe_separator") return number("'", ".", true);
+      return number(",", ".", true);
+    });
+  }
+  function bundleTotals(wrap) {
+    var boxes = wrap.querySelectorAll("[data-pp-bundle-item]:checked");
+    var total = 0;
+    Array.prototype.forEach.call(boxes, function (b) { total += parseInt(b.getAttribute("data-pp-price") || "0", 10); });
+    var value = parseFloat(wrap.getAttribute("data-discount-value") || "0");
+    var off = 0;
+    if (boxes.length >= 2 && value > 0) {
+      off = wrap.getAttribute("data-discount-type") === "fixed" ? Math.round(value * 100) : Math.round(total * value / 100);
+    }
+    off = Math.min(off, total);
+    var fmt = wrap.getAttribute("data-money-format");
+    var set = function (sel, text, hide) {
+      Array.prototype.forEach.call(wrap.querySelectorAll(sel), function (el) { el.textContent = text; el.hidden = Boolean(hide); });
+    };
+    set("[data-pp-bundle-total]", formatMoney(total - off, fmt));
+    set("[data-pp-bundle-compare]", formatMoney(total, fmt), off === 0);
+    set("[data-pp-bundle-count]", String(boxes.length));
+    Array.prototype.forEach.call(wrap.querySelectorAll("[data-pp-bundle-add]"), function (b) { b.disabled = boxes.length === 0; });
+  }
   document.addEventListener("change", function (e) {
-    var sel = e.target.closest && e.target.closest("[data-pp-bundle-variant]");
-    if (!sel) return;
-    var item = sel.closest("[data-pp-bundle-row]") || sel.parentElement;
-    var box = item && item.querySelector("[data-pp-bundle-item]");
-    if (box) box.value = sel.value;
+    var wrap = e.target.closest && e.target.closest("[data-pp-bundle]");
+    if (!wrap) return;
+    var sel = e.target.closest("[data-pp-bundle-variant]");
+    if (sel) {
+      var item = sel.closest("[data-pp-bundle-row]") || sel.parentElement;
+      var box = item && item.querySelector("[data-pp-bundle-item]");
+      var opt = sel.options[sel.selectedIndex];
+      if (box) {
+        box.value = sel.value;
+        if (opt && opt.getAttribute("data-pp-price")) box.setAttribute("data-pp-price", opt.getAttribute("data-pp-price"));
+      }
+      Array.prototype.forEach.call(item ? item.querySelectorAll("[data-pp-bundle-price]") : [], function (el) {
+        if (opt && opt.getAttribute("data-pp-price")) el.textContent = formatMoney(parseInt(opt.getAttribute("data-pp-price"), 10), wrap.getAttribute("data-money-format"));
+      });
+    }
+    if (sel || e.target.matches("[data-pp-bundle-item]")) bundleTotals(wrap);
   });
   document.addEventListener("click", function (e) {
     var btn = e.target.closest && e.target.closest("[data-pp-bundle-add]");
@@ -140,9 +199,11 @@
     };
     set("author", r.author); set("title", r.title); set("body", r.body); set("date", r.date); set("country", r.country);
     set("rating", r.rating);
+    set("initial", r.author ? String(r.author).trim().charAt(0).toUpperCase() : "");
     Array.prototype.forEach.call(node.querySelectorAll('[data-field="stars"]'), function (el) {
       el.setAttribute("data-rating", r.rating);
       el.style.setProperty("--pp-rating", r.rating);
+      el.style.setProperty("--pct", (Number(r.rating) || 0) * 20 + "%");
       el.setAttribute("aria-label", r.rating + " out of 5");
     });
     Array.prototype.forEach.call(node.querySelectorAll('[data-field="photos"]'), function (el) {
@@ -260,5 +321,5 @@
     }, 150);
   }).observe(document.documentElement, { childList: true, subtree: true });
 
-  window.PPAddons = { cartAdd: cartAdd, refreshed: refreshed, startTimers: startTimers, syncGift: syncGift, version: 1 };
+  window.PPAddons = { cartAdd: cartAdd, refreshed: refreshed, startTimers: startTimers, syncGift: syncGift, formatMoney: formatMoney, bundleTotals: bundleTotals, version: 2 };
 })();

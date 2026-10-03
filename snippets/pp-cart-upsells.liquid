@@ -60,8 +60,8 @@
               {%- when 'gift' -%}{{ 'addons.reward_gift_html' | t: amount: remaining }}
             {%- endcase -%}
           {%- else -%}
-            {%- assign unlocked = c.rewards.unlockedText -%}{%- if unlocked == blank -%}{%- assign unlocked = 'addons.reward_all' | t -%}{%- endif -%}
-            {%- render 'icon', name: 'sparkle', size: 16 -%} {{ unlocked | escape }}
+            {%- assign unlocked = c.rewards.unlockedText | escape -%}{%- if unlocked == blank -%}{%- assign unlocked = 'addons.reward_all' | t -%}{%- endif -%}
+            {%- render 'icon', name: 'sparkle', size: 16 -%} {{ unlocked }}
           {%- endif -%}
         </p>
         <div class="ship__track pp-rewards__track" role="progressbar" aria-label="{{ 'cart.free_shipping_progress' | t }}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ pct }}">
@@ -137,8 +137,8 @@
       {%- endcapture -%}
       {%- if cards != blank -%}
         <div class="pp-upsells">
-          {%- assign up_heading = c.slider.heading -%}{%- if up_heading == blank -%}{%- assign up_heading = 'addons.upsells_heading' | t -%}{%- endif -%}
-          <p class="kicker">{{ up_heading | escape }}</p>
+          {%- assign up_heading = c.slider.heading | escape -%}{%- if up_heading == blank -%}{%- assign up_heading = 'addons.upsells_heading' | t -%}{%- endif -%}
+          <p class="kicker">{{ up_heading }}</p>
           <ul class="pp-upsells__rail" role="list">{{ cards }}</ul>
         </div>
       {%- endif -%}

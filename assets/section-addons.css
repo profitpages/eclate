@@ -49,11 +49,11 @@
 .pp-bundle__lock { width: 20px; height: 20px; border-radius: 4px; display: grid; place-items: center; background: var(--accent); color: var(--card); }
 .pp-bundle__thumb { width: 64px; height: 64px; border-radius: calc(var(--radius-card) * .6); overflow: hidden; background: var(--bg); cursor: pointer; }
 .pp-bundle__thumb img { width: 100%; height: 100%; object-fit: cover; }
-.pp-bundle__name { display: grid; gap: 6px; min-width: 0; font-weight: 600; font-size: .95rem; }
+.pp-bundle__name { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; min-width: 0; font-weight: 600; font-size: .95rem; }
 .pp-bundle__name a { text-decoration: none; }
 .pp-bundle__name a:hover { text-decoration: underline; }
 .pp-bundle__this { display: block; font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
-.pp-bundle__variant { min-height: 38px; padding: 6px 12px; font-size: .85rem; max-width: 220px; }
+.pp-bundle__variant { justify-self: start; min-height: 38px; padding: 6px 12px; font-size: .85rem; max-width: 100%; }
 .pp-bundle__price { font-weight: 600; white-space: nowrap; }
 .pp-bundle__item:has(.pp-bundle__check:not(:checked)) .pp-bundle__thumb,
 .pp-bundle__item:has(.pp-bundle__check:not(:checked)) .pp-bundle__name,
