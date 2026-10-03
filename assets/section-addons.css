@@ -1,0 +1,106 @@
+/* ==========================================================================
+   Éclaté × Profit Pages add-ons: quantity breaks, bought together, reviews,
+   cart upsells. Built from Éclaté's own tokens (theme-styles.liquid) and
+   components (.glass, .badge, .kicker, .btn, .ship), so they follow the
+   merchant's colors, fonts and corner radius.
+   ========================================================================== */
+
+/* ---------- Quantity breaks ---------- */
+.pp-qb { margin: 0; padding: 0; border: 0; display: grid; gap: 12px; }
+.pp-qb__legend { padding: 0; margin-bottom: 2px; }
+.pp-qb__tiers { display: grid; gap: 10px; }
+.pp-qb__tier {
+  position: relative; display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 4px 14px;
+  min-height: 64px; padding: 14px 18px; border-radius: var(--radius-card); border: 1.5px solid transparent; cursor: pointer;
+  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+.pp-qb__tier:hover { transform: translateY(-1px); }
+.pp-qb__input { position: absolute; opacity: 0; pointer-events: none; }
+.pp-qb__dot { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid color-mix(in srgb, var(--text) 35%, transparent); display: grid; place-items: center; }
+.pp-qb__dot::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); transform: scale(0); transition: transform .2s ease; }
+.pp-qb__input:checked ~ .pp-qb__dot { border-color: var(--accent); }
+.pp-qb__input:checked ~ .pp-qb__dot::after { transform: scale(1); }
+.pp-qb__tier:has(.pp-qb__input:checked) { border-color: var(--accent); box-shadow: 0 18px 36px rgba(var(--shadow-rgb), calc(.16 * var(--shadow-k))); }
+.pp-qb__tier:has(.pp-qb__input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+.pp-qb__main { display: grid; gap: 2px; min-width: 0; }
+.pp-qb__label { font-family: var(--font-heading); font-size: 1.12rem; line-height: 1.2; }
+.pp-qb__each { font-size: .8rem; }
+.pp-qb__badge { box-shadow: none; background: color-mix(in srgb, var(--accent) 14%, var(--card)); color: var(--accent); }
+.pp-qb__price { display: grid; justify-items: end; line-height: 1.2; }
+.pp-qb__price strong { font-size: 1.05rem; }
+.pp-qb__price s { font-size: .8rem; }
+@media (max-width: 480px) {
+  .pp-qb__tier { grid-template-columns: auto 1fr auto; padding: 12px 14px; }
+  .pp-qb__badge { grid-column: 2; justify-self: start; }
+  .pp-qb__price { grid-column: 3; grid-row: 1 / span 2; }
+}
+
+/* ---------- Bought together ---------- */
+.pp-bundle { display: grid; gap: 18px; padding: clamp(18px, 3vw, 28px); }
+.pp-bundle__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.pp-bundle__items { display: grid; gap: 12px; }
+.pp-bundle__item { position: relative; display: grid; grid-template-columns: auto 64px 1fr auto; align-items: center; gap: 12px; }
+.pp-bundle__item:first-child { grid-template-columns: 64px 1fr auto; }
+.pp-bundle__plus { position: absolute; left: -2px; top: -14px; font-family: var(--font-heading); color: var(--muted); font-size: 1rem; }
+.pp-bundle__check { width: 20px; height: 20px; accent-color: var(--accent); margin: 0; }
+.pp-bundle__thumb { width: 64px; height: 64px; border-radius: calc(var(--radius-card) * .6); overflow: hidden; background: var(--bg); cursor: pointer; }
+.pp-bundle__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pp-bundle__name { display: grid; gap: 6px; min-width: 0; font-weight: 600; font-size: .95rem; }
+.pp-bundle__name a { text-decoration: none; }
+.pp-bundle__name a:hover { text-decoration: underline; }
+.pp-bundle__this { display: block; font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+.pp-bundle__variant { min-height: 38px; padding: 6px 12px; font-size: .85rem; max-width: 220px; }
+.pp-bundle__price { font-weight: 600; white-space: nowrap; }
+.pp-bundle__item:has(.pp-bundle__check:not(:checked)) .pp-bundle__thumb,
+.pp-bundle__item:has(.pp-bundle__check:not(:checked)) .pp-bundle__name,
+.pp-bundle__item:has(.pp-bundle__check:not(:checked)) .pp-bundle__price { opacity: .45; }
+.pp-bundle__foot { display: grid; gap: 12px; padding-top: 16px; border-top: 1px solid var(--border); }
+.pp-bundle__total { display: flex; align-items: baseline; gap: 10px; margin: 0; }
+.pp-bundle__total span { margin-right: auto; color: var(--muted); }
+.pp-bundle__total strong { font-family: var(--font-heading); font-size: 1.35rem; font-weight: var(--font-heading-weight); }
+
+/* ---------- Reviews ---------- */
+.pp-reviews { display: grid; gap: 18px; }
+.pp-reviews__list { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.pp-review { display: grid; gap: 10px; align-content: start; padding: 22px; border-radius: var(--radius-card); }
+.pp-review__top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.pp-review__date { font-size: .8rem; }
+.pp-review__title { font-size: 1.15rem; }
+.pp-review__body { margin: 0; line-height: 1.6; }
+.pp-review__photos { display: flex; gap: 8px; flex-wrap: wrap; }
+.pp-review__photos img { width: 72px; height: 72px; object-fit: cover; border-radius: calc(var(--radius-card) * .5); }
+.pp-review__author { display: flex; gap: 8px; align-items: baseline; margin: 0; font-size: .9rem; }
+.pp-reviews__more { justify-self: center; }
+.pp-reviews__note { font-size: .8rem; text-align: center; }
+
+/* ---------- Cart upsells (inside the cart drawer) ---------- */
+.pp-rewards__track { position: relative; overflow: visible; }
+.pp-rewards__stop {
+  position: absolute; top: 50%; translate: -50% -50%; width: 22px; height: 22px; border-radius: 50%;
+  display: grid; place-items: center; font-size: .65rem; font-weight: 700;
+  background: var(--card); color: var(--muted); border: 1.5px solid var(--border);
+}
+.pp-rewards__stop:last-child { translate: -100% -50%; }
+.pp-rewards__stop.is-done { background: var(--accent); color: var(--accent-btn-label, var(--bg)); border-color: var(--accent); }
+.pp-timer { display: flex; align-items: center; gap: 8px; margin: 10px 0 0; font-size: .85rem; color: var(--muted); }
+.pp-timer__clock { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--text); }
+.pp-protect { display: grid; grid-template-columns: auto auto 1fr auto; align-items: center; gap: 12px; margin-top: 16px; padding: 14px 16px; border-radius: var(--radius-card); cursor: pointer; }
+.pp-protect input { width: 20px; height: 20px; accent-color: var(--accent); margin: 0; }
+.pp-protect__icon { color: var(--accent); }
+.pp-protect__text { display: grid; gap: 2px; font-size: .9rem; }
+.pp-protect__text .muted { font-size: .78rem; }
+.pp-protect__price { font-weight: 700; }
+.pp-upsells { display: grid; gap: 12px; margin-top: 22px; }
+.pp-upsells__rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(250px, 85%); gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; position: relative; }
+.pp-upsell { display: grid; grid-template-columns: 56px 1fr auto; align-items: center; gap: 12px; padding: 10px; border-radius: var(--radius-card); background: var(--card); scroll-snap-align: start; }
+.pp-upsell__media { width: 56px; height: 56px; border-radius: calc(var(--radius-card) * .5); overflow: hidden; }
+.pp-upsell__media img { width: 100%; height: 100%; object-fit: cover; }
+.pp-upsell__info { display: grid; gap: 2px; min-width: 0; font-size: .85rem; }
+.pp-upsell__title { font-weight: 600; text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pp-upsell__add { min-height: 40px; width: 40px; padding: 0; }
+.pp-payments { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 14px; }
+.pp-payments__icon { width: 38px; height: 24px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-qb__tier, .pp-qb__dot::after { transition: none; }
+}

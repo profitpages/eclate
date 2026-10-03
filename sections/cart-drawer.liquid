@@ -10,7 +10,8 @@
 
     {%- if cart.item_count > 0 -%}
       <div class="drawer__body">
-        {%- render 'free-shipping-bar' -%}
+        {%- capture pp_top -%}{%- render 'pp-cart-upsells', part: 'top' -%}{%- endcapture -%}
+        {%- if pp_top != blank -%}{{ pp_top }}{%- else -%}{%- render 'free-shipping-bar' -%}{%- endif -%}
         <form action="{{ routes.cart_url }}" method="post" id="CartDrawerForm" novalidate>
           <ul class="cart-lines" role="list">
             {%- for item in cart.items -%}{%- render 'cart-item', item: item, index: forloop.index, prefix: 'Drawer' -%}{%- endfor -%}
@@ -23,6 +24,7 @@
             </details>
           {%- endif -%}
         </form>
+        {%- render 'pp-cart-upsells', part: 'bottom' -%}
         {%- if settings.cart_recommendations -%}
           <cart-recommendations class="cart-recs" data-product-id="{{ cart.items.first.product_id }}" data-url="{{ routes.product_recommendations_url }}?section_id=cart-recommendations&limit=4"></cart-recommendations>
         {%- endif -%}

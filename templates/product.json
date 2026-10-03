@@ -77,6 +77,18 @@
             "text_4": "Two samples with every order",
             "color_scheme": "scheme-4"
           }
+        },
+        "quantity_breaks": {
+          "type": "quantity_breaks",
+          "settings": {
+            "heading": "Buy more, save more"
+          }
+        },
+        "bundle": {
+          "type": "bundle",
+          "settings": {
+            "heading": "Complete the ritual"
+          }
         }
       },
       "block_order": [
@@ -90,7 +102,9 @@
         "divider_8",
         "highlights_9",
         "variant_picker_10",
+        "quantity_breaks",
         "buy_buttons_11",
+        "bundle",
         "reassurance_12"
       ]
     },
