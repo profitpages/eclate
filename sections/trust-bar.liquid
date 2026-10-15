@@ -14,38 +14,113 @@
 
 {% schema %}
 {
-  "name": "Trust bar",
+  "name": "t:sections.trust-bar.name",
   "class": "section-trust",
   "max_blocks": 6,
   "settings": [
-    { "type": "checkbox", "id": "card", "label": "Show inside a card", "default": true },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+    {
+      "type": "checkbox",
+      "id": "card",
+      "label": "t:sections.trust-bar.settings.card.label",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.trust-bar.settings.color_scheme.label",
+      "default": "scheme-1"
+    }
   ],
   "blocks": [
     {
-      "type": "item", "name": "Item",
+      "type": "item",
+      "name": "t:sections.trust-bar.blocks.item.name",
       "settings": [
         {
-          "type": "select", "id": "icon", "label": "Icon",
+          "type": "select",
+          "id": "icon",
+          "label": "t:sections.trust-bar.blocks.item.settings.icon.label",
           "options": [
-            { "value": "rabbit", "label": "Cruelty-free" }, { "value": "leaf", "label": "Leaf" }, { "value": "shield", "label": "Secure" },
-            { "value": "truck", "label": "Shipping" }, { "value": "return", "label": "Returns" }, { "value": "gift", "label": "Gift" },
-            { "value": "sparkle", "label": "Sparkle" }, { "value": "recycle", "label": "Recyclable" }, { "value": "flask", "label": "Tested" }
+            {
+              "value": "rabbit",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__1.label"
+            },
+            {
+              "value": "leaf",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__2.label"
+            },
+            {
+              "value": "shield",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__3.label"
+            },
+            {
+              "value": "truck",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__4.label"
+            },
+            {
+              "value": "return",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__5.label"
+            },
+            {
+              "value": "gift",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__6.label"
+            },
+            {
+              "value": "sparkle",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__7.label"
+            },
+            {
+              "value": "recycle",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__8.label"
+            },
+            {
+              "value": "flask",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__9.label"
+            }
           ],
           "default": "rabbit"
         },
-        { "type": "text", "id": "text", "label": "Text", "default": "Cruelty-free always" }
+        {
+          "type": "text",
+          "id": "text",
+          "label": "t:sections.trust-bar.blocks.item.settings.text.label",
+          "default": "Cruelty-free always"
+        }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Trust bar",
+      "name": "t:sections.trust-bar.presets.presets__1.name",
       "blocks": [
-        { "type": "item", "settings": { "icon": "rabbit", "text": "Cruelty-free always" } },
-        { "type": "item", "settings": { "icon": "leaf", "text": "Thoughtful ingredients" } },
-        { "type": "item", "settings": { "icon": "shield", "text": "Secure checkout" } },
-        { "type": "item", "settings": { "icon": "truck", "text": "Fast, considered shipping" } }
+        {
+          "type": "item",
+          "settings": {
+            "icon": "rabbit",
+            "text": "Cruelty-free always"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "icon": "leaf",
+            "text": "Thoughtful ingredients"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "icon": "shield",
+            "text": "Secure checkout"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "text": "Fast, considered shipping"
+          }
+        }
       ]
     }
   ]

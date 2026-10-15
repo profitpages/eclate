@@ -26,7 +26,7 @@
         "open_filters": 3,
         "enable_sorting": true,
         "card_style": "stage",
-        "image_ratio": "square",
+        "image_ratio": "adapt",
         "show_vendor": false,
         "show_quick_add": true,
         "filter_scheme": "scheme-2",

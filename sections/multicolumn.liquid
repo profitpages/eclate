@@ -27,50 +27,189 @@
 
 {% schema %}
 {
-  "name": "Multicolumn",
+  "name": "t:sections.multicolumn.name",
   "class": "section-multicolumn",
   "max_blocks": 12,
   "settings": [
-    { "type": "text", "id": "kicker", "label": "Kicker" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Rituals for every moment." },
-    { "type": "richtext", "id": "text", "label": "Text" },
-    { "type": "select", "id": "heading_align", "label": "Heading alignment", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }], "default": "left" },
-    { "type": "range", "id": "columns", "label": "Columns (desktop)", "min": 2, "max": 5, "step": 1, "default": 3 },
     {
-      "type": "select", "id": "style", "label": "Style",
-      "options": [{ "value": "card", "label": "Soft cards" }, { "value": "open", "label": "Open (image + text)" }],
+      "type": "text",
+      "id": "kicker",
+      "label": "t:sections.multicolumn.settings.kicker.label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.multicolumn.settings.heading.label",
+      "default": "Rituals for every moment."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.multicolumn.settings.text.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "t:sections.multicolumn.settings.heading_align.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.multicolumn.settings.heading_align.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.multicolumn.settings.heading_align.options__2.label"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "t:sections.multicolumn.settings.columns.label",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "t:sections.multicolumn.settings.style.label",
+      "options": [
+        {
+          "value": "card",
+          "label": "t:sections.multicolumn.settings.style.options__1.label"
+        },
+        {
+          "value": "open",
+          "label": "t:sections.multicolumn.settings.style.options__2.label"
+        }
+      ],
       "default": "card"
     },
     {
-      "type": "select", "id": "shape", "label": "Image shape",
-      "options": [{ "value": "landscape", "label": "Landscape" }, { "value": "portrait", "label": "Portrait" }, { "value": "arch", "label": "Arch" }, { "value": "circle", "label": "Circle" }],
+      "type": "select",
+      "id": "shape",
+      "label": "t:sections.multicolumn.settings.shape.label",
+      "options": [
+        {
+          "value": "landscape",
+          "label": "t:sections.multicolumn.settings.shape.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.multicolumn.settings.shape.options__2.label"
+        },
+        {
+          "value": "arch",
+          "label": "t:sections.multicolumn.settings.shape.options__3.label"
+        },
+        {
+          "value": "circle",
+          "label": "t:sections.multicolumn.settings.shape.options__4.label"
+        }
+      ],
       "default": "landscape"
     },
-    { "type": "select", "id": "text_align", "label": "Text alignment", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }], "default": "left" },
-    { "type": "checkbox", "id": "swipe", "label": "Swipe on mobile", "default": true },
-    { "type": "text", "id": "button_label", "label": "Button label" },
-    { "type": "url", "id": "button_link", "label": "Button link" },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "t:sections.multicolumn.settings.text_align.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.multicolumn.settings.text_align.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.multicolumn.settings.text_align.options__2.label"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "swipe",
+      "label": "t:sections.multicolumn.settings.swipe.label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.multicolumn.settings.button_label.label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.multicolumn.settings.button_link.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.multicolumn.settings.color_scheme.label",
+      "default": "scheme-1"
+    }
   ],
   "blocks": [
     {
-      "type": "column", "name": "Column",
+      "type": "column",
+      "name": "t:sections.multicolumn.blocks.column.name",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "title", "label": "Title", "default": "Morning" },
-        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Light layers and SPF for a fresh, protected glow.</p>" },
-        { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop AM" },
-        { "type": "url", "id": "link", "label": "Link" }
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.multicolumn.blocks.column.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.multicolumn.blocks.column.settings.title.label",
+          "default": "Morning"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.multicolumn.blocks.column.settings.text.label",
+          "default": "<p>Light layers and SPF for a fresh, protected glow.</p>"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "t:sections.multicolumn.blocks.column.settings.link_label.label",
+          "default": "Shop AM"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.multicolumn.blocks.column.settings.link.label"
+        }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Multicolumn",
+      "name": "t:sections.multicolumn.presets.presets__1.name",
       "blocks": [
-        { "type": "column" },
-        { "type": "column", "settings": { "title": "Evening", "text": "<p>Richer textures that replenish while you rest.</p>", "link_label": "Shop PM" } },
-        { "type": "column", "settings": { "title": "On the go", "text": "<p>Minis and balms for a glow between meetings.</p>", "link_label": "Shop minis" } }
+        {
+          "type": "column"
+        },
+        {
+          "type": "column",
+          "settings": {
+            "title": "Evening",
+            "text": "<p>Richer textures that replenish while you rest.</p>",
+            "link_label": "Shop PM"
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "title": "On the go",
+            "text": "<p>Minis and balms for a glow between meetings.</p>",
+            "link_label": "Shop minis"
+          }
+        }
       ]
     }
   ]

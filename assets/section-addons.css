@@ -109,3 +109,12 @@ ul.pp-payments { display: flex; flex-wrap: wrap; justify-content: center; gap: 6
 @media (prefers-reduced-motion: reduce) {
   .pp-qb__tier, .pp-qb__dot::after { transition: none; }
 }
+/* Profit Pages: native add-ons fit narrow product columns and long labels. */
+.pp-qb, .pp-bundle, .pp-bundle * { box-sizing: border-box; min-width: 0; }
+.pp-qb [hidden], .pp-bundle [hidden] { display: none !important; }
+.pp-qb--tiles .pp-qb__tiers { grid-auto-flow: row; grid-template-columns: repeat(auto-fit, minmax(min(100%, 112px), 1fr)); }
+.pp-qb__label, .pp-bundle__title { overflow-wrap: anywhere; }
+.pp-bundle__head { flex-wrap: wrap; }
+.pp-qb__badge { width: max-content; max-width: calc(100% - 12px); white-space: normal; text-align: center; overflow-wrap: anywhere; }
+.pp-bundle__variant { max-width: 100%; }
+.pp-bundle--cards ul.pp-bundle__items { grid-auto-flow: row; grid-template-columns: repeat(auto-fit, minmax(min(100%, 120px), 1fr)); }

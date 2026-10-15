@@ -90,89 +90,342 @@
 
 {% schema %}
 {
-  "name": "Hero",
+  "name": "t:sections.hero.name",
   "class": "section-hero",
   "max_blocks": 6,
   "settings": [
     {
-      "type": "select", "id": "layout", "label": "Layout",
+      "type": "select",
+      "id": "layout",
+      "label": "t:sections.hero.settings.layout.label",
       "options": [
-        { "value": "stage", "label": "2.5D layered stage" },
-        { "value": "split", "label": "Split image" },
-        { "value": "cover", "label": "Full background image" }
+        {
+          "value": "stage",
+          "label": "t:sections.hero.settings.layout.options__1.label"
+        },
+        {
+          "value": "split",
+          "label": "t:sections.hero.settings.layout.options__2.label"
+        },
+        {
+          "value": "cover",
+          "label": "t:sections.hero.settings.layout.options__3.label"
+        }
       ],
       "default": "stage"
     },
-    { "type": "image_picker", "id": "image", "label": "Image" },
-    { "type": "image_picker", "id": "image_mobile", "label": "Mobile image", "info": "Optional. Used below 750px wide." },
     {
-      "type": "select", "id": "image_position", "label": "Image focal point",
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.hero.settings.image.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "t:sections.hero.settings.image_mobile.label",
+      "info": "t:sections.hero.settings.image_mobile.info"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "t:sections.hero.settings.image_position.label",
       "options": [
-        { "value": "center", "label": "Center" }, { "value": "top", "label": "Top" }, { "value": "bottom", "label": "Bottom" },
-        { "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }
+        {
+          "value": "center",
+          "label": "t:sections.hero.settings.image_position.options__1.label"
+        },
+        {
+          "value": "top",
+          "label": "t:sections.hero.settings.image_position.options__2.label"
+        },
+        {
+          "value": "bottom",
+          "label": "t:sections.hero.settings.image_position.options__3.label"
+        },
+        {
+          "value": "left",
+          "label": "t:sections.hero.settings.image_position.options__4.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.hero.settings.image_position.options__5.label"
+        }
       ],
       "default": "center"
     },
     {
-      "type": "select", "id": "art", "label": "Default art (no image)",
+      "type": "select",
+      "id": "art",
+      "label": "t:sections.hero.settings.art.label",
       "options": [
-        { "value": "serum", "label": "Dropper serum" }, { "value": "jar", "label": "Cream jar" }, { "value": "pump", "label": "Pump bottle" },
-        { "value": "tube", "label": "Tube" }, { "value": "compact", "label": "Blush compact" }, { "value": "lipstick", "label": "Lipstick" }
+        {
+          "value": "serum",
+          "label": "t:sections.hero.settings.art.options__1.label"
+        },
+        {
+          "value": "jar",
+          "label": "t:sections.hero.settings.art.options__2.label"
+        },
+        {
+          "value": "pump",
+          "label": "t:sections.hero.settings.art.options__3.label"
+        },
+        {
+          "value": "tube",
+          "label": "t:sections.hero.settings.art.options__4.label"
+        },
+        {
+          "value": "compact",
+          "label": "t:sections.hero.settings.art.options__5.label"
+        },
+        {
+          "value": "lipstick",
+          "label": "t:sections.hero.settings.art.options__6.label"
+        }
       ],
       "default": "jar"
     },
-    { "type": "header", "content": "2.5D stage details" },
-    { "type": "image_picker", "id": "image_2", "label": "Floating product cut-out", "info": "Transparent PNG floats over the stage." },
-    { "type": "text", "id": "badge", "label": "Tilted badge", "default": "New · Rose Dew" },
-    { "type": "text", "id": "card_title", "label": "Floating card title", "default": "Cloud-touch hydration" },
-    { "type": "text", "id": "card_text", "label": "Floating card text", "default": "Daily dew, without the weight." },
-    { "type": "header", "content": "Layout" },
     {
-      "type": "select", "id": "content_position", "label": "Content position",
-      "options": [{ "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }],
+      "type": "header",
+      "content": "t:sections.hero.settings.header__6.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "t:sections.hero.settings.image_2.label",
+      "info": "t:sections.hero.settings.image_2.info"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "t:sections.hero.settings.badge.label",
+      "default": "New · Rose Dew"
+    },
+    {
+      "type": "text",
+      "id": "card_title",
+      "label": "t:sections.hero.settings.card_title.label",
+      "default": "Cloud-touch hydration"
+    },
+    {
+      "type": "text",
+      "id": "card_text",
+      "label": "t:sections.hero.settings.card_text.label",
+      "default": "Daily dew, without the weight."
+    },
+    {
+      "type": "header",
+      "content": "t:sections.hero.settings.header__11.content"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "t:sections.hero.settings.content_position.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.hero.settings.content_position.options__1.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.hero.settings.content_position.options__2.label"
+        }
+      ],
       "default": "left"
     },
     {
-      "type": "select", "id": "text_align", "label": "Text alignment",
-      "options": [{ "value": "start", "label": "Left" }, { "value": "center", "label": "Center" }],
+      "type": "select",
+      "id": "text_align",
+      "label": "t:sections.hero.settings.text_align.label",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:sections.hero.settings.text_align.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.hero.settings.text_align.options__2.label"
+        }
+      ],
       "default": "start"
     },
     {
-      "type": "select", "id": "height", "label": "Height",
-      "options": [{ "value": "auto", "label": "Fit content" }, { "value": "md", "label": "Medium" }, { "value": "lg", "label": "Large" }, { "value": "full", "label": "Full screen" }],
+      "type": "select",
+      "id": "height",
+      "label": "t:sections.hero.settings.height.label",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:sections.hero.settings.height.options__1.label"
+        },
+        {
+          "value": "md",
+          "label": "t:sections.hero.settings.height.options__2.label"
+        },
+        {
+          "value": "lg",
+          "label": "t:sections.hero.settings.height.options__3.label"
+        },
+        {
+          "value": "full",
+          "label": "t:sections.hero.settings.height.options__4.label"
+        }
+      ],
       "default": "auto"
     },
-    { "type": "range", "id": "overlay", "label": "Image overlay (full background layout)", "min": 0, "max": 80, "step": 5, "unit": "%", "default": 25 },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+    {
+      "type": "range",
+      "id": "overlay",
+      "label": "t:sections.hero.settings.overlay.label",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "default": 25
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.hero.settings.color_scheme.label",
+      "default": "scheme-1"
+    }
   ],
   "blocks": [
-    { "type": "kicker", "name": "Kicker", "limit": 1, "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "The ritual edit" }] },
-    { "type": "heading", "name": "Heading", "limit": 1, "settings": [{ "type": "text", "id": "heading", "label": "Heading", "default": "Skin, lit from within." }] },
-    { "type": "text", "name": "Text", "limit": 1, "settings": [{ "type": "richtext", "id": "text", "label": "Text", "default": "<p>Layered skincare and soft-focus colour for the little rituals that make every day feel luminous.</p>" }] },
     {
-      "type": "buttons", "name": "Buttons", "limit": 1,
+      "type": "kicker",
+      "name": "t:sections.hero.blocks.kicker.name",
+      "limit": 1,
       "settings": [
-        { "type": "text", "id": "label_1", "label": "Primary button", "default": "Shop the collection" },
-        { "type": "url", "id": "link_1", "label": "Primary link" },
-        { "type": "text", "id": "label_2", "label": "Secondary button", "default": "Discover the serum" },
-        { "type": "url", "id": "link_2", "label": "Secondary link" }
+        {
+          "type": "text",
+          "id": "text",
+          "label": "t:sections.hero.blocks.kicker.settings.text.label",
+          "default": "The ritual edit"
+        }
       ]
     },
     {
-      "type": "stats", "name": "Stats", "limit": 1,
+      "type": "heading",
+      "name": "t:sections.hero.blocks.heading.name",
+      "limit": 1,
       "settings": [
-        { "type": "paragraph", "content": "Use real, verifiable figures only." },
-        { "type": "text", "id": "value_1", "label": "Stat 1 value", "default": "98%" },
-        { "type": "text", "id": "label_1", "label": "Stat 1 label", "default": "would recommend" },
-        { "type": "text", "id": "value_2", "label": "Stat 2 value", "default": "4.9/5" },
-        { "type": "text", "id": "label_2", "label": "Stat 2 label", "default": "community rating" },
-        { "type": "text", "id": "value_3", "label": "Stat 3 value" },
-        { "type": "text", "id": "label_3", "label": "Stat 3 label" }
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "t:sections.hero.blocks.heading.settings.heading.label",
+          "default": "Skin, lit from within."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.hero.blocks.text.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.hero.blocks.text.settings.text.label",
+          "default": "<p>Layered skincare and soft-focus colour for the little rituals that make every day feel luminous.</p>"
+        }
+      ]
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.hero.blocks.buttons.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label_1",
+          "label": "t:sections.hero.blocks.buttons.settings.label_1.label",
+          "default": "Shop the collection"
+        },
+        {
+          "type": "url",
+          "id": "link_1",
+          "label": "t:sections.hero.blocks.buttons.settings.link_1.label"
+        },
+        {
+          "type": "text",
+          "id": "label_2",
+          "label": "t:sections.hero.blocks.buttons.settings.label_2.label",
+          "default": "Discover the serum"
+        },
+        {
+          "type": "url",
+          "id": "link_2",
+          "label": "t:sections.hero.blocks.buttons.settings.link_2.label"
+        }
+      ]
+    },
+    {
+      "type": "stats",
+      "name": "t:sections.hero.blocks.stats.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:sections.hero.blocks.stats.settings.paragraph__1.content"
+        },
+        {
+          "type": "text",
+          "id": "value_1",
+          "label": "t:sections.hero.blocks.stats.settings.value_1.label",
+          "default": "98%"
+        },
+        {
+          "type": "text",
+          "id": "label_1",
+          "label": "t:sections.hero.blocks.stats.settings.label_1.label",
+          "default": "would recommend"
+        },
+        {
+          "type": "text",
+          "id": "value_2",
+          "label": "t:sections.hero.blocks.stats.settings.value_2.label",
+          "default": "4.9/5"
+        },
+        {
+          "type": "text",
+          "id": "label_2",
+          "label": "t:sections.hero.blocks.stats.settings.label_2.label",
+          "default": "community rating"
+        },
+        {
+          "type": "text",
+          "id": "value_3",
+          "label": "t:sections.hero.blocks.stats.settings.value_3.label"
+        },
+        {
+          "type": "text",
+          "id": "label_3",
+          "label": "t:sections.hero.blocks.stats.settings.label_3.label"
+        }
       ]
     }
   ],
   "presets": [
-    { "name": "Hero", "blocks": [{ "type": "kicker" }, { "type": "heading" }, { "type": "text" }, { "type": "buttons" }, { "type": "stats" }] }
+    {
+      "name": "t:sections.hero.presets.presets__1.name",
+      "blocks": [
+        {
+          "type": "kicker"
+        },
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "buttons"
+        },
+        {
+          "type": "stats"
+        }
+      ]
+    }
   ]
 }
 {% endschema %}

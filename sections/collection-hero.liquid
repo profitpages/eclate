@@ -47,21 +47,79 @@
 
 {% schema %}
 {
-  "name": "Collection banner",
+  "name": "t:sections.collection-hero.name",
   "class": "section-collection-hero",
   "settings": [
-    { "type": "text", "id": "kicker", "label": "Kicker", "default": "The complete edit" },
-    { "type": "text", "id": "heading", "label": "Heading (when not on a collection)", "default": "Beauty, considered." },
-    { "type": "richtext", "id": "text", "label": "Text (when the collection has no description)", "default": "<p>Skin-loving colour, care, and sensorial formulas designed to turn your everyday into a small, beautiful ritual.</p>" },
-    { "type": "image_picker", "id": "background_image", "label": "Faded background image" },
-    { "type": "checkbox", "id": "show_art", "label": "Show floating framed image", "default": true },
-    { "type": "image_picker", "id": "image", "label": "Framed image", "info": "Defaults to the collection image." },
-    { "type": "text", "id": "pill", "label": "Pill label", "default": "Ritual ready" },
-    { "type": "checkbox", "id": "show_count", "label": "Show product count", "default": true },
-    { "type": "checkbox", "id": "show_breadcrumb", "label": "Show breadcrumb", "default": true },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Banner color scheme", "default": "scheme-4" },
-    { "type": "color_scheme", "id": "section_scheme", "label": "Section color scheme", "default": "scheme-1" }
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "t:sections.collection-hero.settings.kicker.label",
+      "default": "The complete edit"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.collection-hero.settings.heading.label",
+      "default": "Beauty, considered."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.collection-hero.settings.text.label",
+      "default": "<p>Skin-loving colour, care, and sensorial formulas designed to turn your everyday into a small, beautiful ritual.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:sections.collection-hero.settings.background_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_art",
+      "label": "t:sections.collection-hero.settings.show_art.label",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.collection-hero.settings.image.label",
+      "info": "t:sections.collection-hero.settings.image.info"
+    },
+    {
+      "type": "text",
+      "id": "pill",
+      "label": "t:sections.collection-hero.settings.pill.label",
+      "default": "Ritual ready"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_count",
+      "label": "t:sections.collection-hero.settings.show_count.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumb",
+      "label": "t:sections.collection-hero.settings.show_breadcrumb.label",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.collection-hero.settings.color_scheme.label",
+      "default": "scheme-4"
+    },
+    {
+      "type": "color_scheme",
+      "id": "section_scheme",
+      "label": "t:sections.collection-hero.settings.section_scheme.label",
+      "default": "scheme-1"
+    }
   ],
-  "presets": [{ "name": "Collection banner" }]
+  "presets": [
+    {
+      "name": "t:sections.collection-hero.presets.presets__1.name"
+    }
+  ]
 }
 {% endschema %}

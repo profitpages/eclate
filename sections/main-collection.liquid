@@ -180,58 +180,221 @@
 
 {% schema %}
 {
-  "name": "Product grid",
+  "name": "t:sections.main-collection.name",
   "class": "section-main-collection",
   "max_blocks": 8,
   "settings": [
-    { "type": "range", "id": "per_page", "label": "Products per page", "min": 8, "max": 36, "step": 4, "default": 12 },
-    { "type": "range", "id": "columns", "label": "Products per row (desktop)", "min": 2, "max": 4, "step": 1, "default": 3 },
     {
-      "type": "select", "id": "columns_mobile", "label": "Products per row (mobile)",
-      "options": [{ "value": "1", "label": "1" }, { "value": "2", "label": "2" }],
+      "type": "range",
+      "id": "per_page",
+      "label": "t:sections.main-collection.settings.per_page.label",
+      "min": 8,
+      "max": 36,
+      "step": 4,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "t:sections.main-collection.settings.columns.label",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "t:sections.main-collection.settings.columns_mobile.label",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.main-collection.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.main-collection.settings.columns_mobile.options__2.label"
+        }
+      ],
       "default": "2"
     },
-    { "type": "checkbox", "id": "load_more", "label": "Show 'Load more' button", "default": true, "info": "Numbered pages remain available for search engines." },
-    { "type": "text", "id": "note", "label": "Note beside the count", "default": "Made for the moment" },
-    { "type": "header", "content": "Filters & sorting" },
-    { "type": "checkbox", "id": "enable_filters", "label": "Enable filters", "default": true, "info": "Configure filters with the Shopify Search & Discovery app." },
-    { "type": "range", "id": "open_filters", "label": "Filter groups open by default", "min": 0, "max": 6, "step": 1, "default": 3 },
-    { "type": "checkbox", "id": "enable_sorting", "label": "Enable sorting", "default": true },
-    { "type": "header", "content": "Product cards" },
     {
-      "type": "select", "id": "card_style", "label": "Card style",
-      "options": [{ "value": "stage", "label": "2.5D stage" }, { "value": "soft", "label": "Soft card" }],
+      "type": "checkbox",
+      "id": "load_more",
+      "label": "t:sections.main-collection.settings.load_more.label",
+      "default": true,
+      "info": "t:sections.main-collection.settings.load_more.info"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "t:sections.main-collection.settings.note.label",
+      "default": "Made for the moment"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-collection.settings.header__6.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filters",
+      "label": "t:sections.main-collection.settings.enable_filters.label",
+      "default": true,
+      "info": "t:sections.main-collection.settings.enable_filters.info"
+    },
+    {
+      "type": "range",
+      "id": "open_filters",
+      "label": "t:sections.main-collection.settings.open_filters.label",
+      "min": 0,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "label": "t:sections.main-collection.settings.enable_sorting.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-collection.settings.header__10.content"
+    },
+    {
+      "type": "select",
+      "id": "card_style",
+      "label": "t:sections.main-collection.settings.card_style.label",
+      "options": [
+        {
+          "value": "stage",
+          "label": "t:sections.main-collection.settings.card_style.options__1.label"
+        },
+        {
+          "value": "soft",
+          "label": "t:sections.main-collection.settings.card_style.options__2.label"
+        }
+      ],
       "default": "stage"
     },
     {
-      "type": "select", "id": "image_ratio", "label": "Image ratio",
-      "options": [{ "value": "portrait", "label": "Portrait" }, { "value": "square", "label": "Square" }],
-      "default": "square"
+      "type": "select",
+      "id": "image_ratio",
+      "label": "t:sections.main-collection.settings.image_ratio.label",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.main-collection.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.main-collection.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.main-collection.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt"
     },
-    { "type": "checkbox", "id": "show_vendor", "label": "Show vendor", "default": false },
-    { "type": "checkbox", "id": "show_quick_add", "label": "Show quick add", "default": true },
-    { "type": "color_scheme", "id": "filter_scheme", "label": "Filter panel color scheme", "default": "scheme-2" },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "t:sections.main-collection.settings.show_vendor.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quick_add",
+      "label": "t:sections.main-collection.settings.show_quick_add.label",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "filter_scheme",
+      "label": "t:sections.main-collection.settings.filter_scheme.label",
+      "default": "scheme-2"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.main-collection.settings.color_scheme.label",
+      "default": "scheme-1"
+    }
   ],
   "blocks": [
     {
-      "type": "tab", "name": "Category tab",
+      "type": "tab",
+      "name": "t:sections.main-collection.blocks.tab.name",
       "settings": [
-        { "type": "collection", "id": "collection", "label": "Collection", "info": "Leave empty for 'All'." },
-        { "type": "text", "id": "label", "label": "Label", "default": "All" }
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:sections.main-collection.blocks.tab.settings.collection.label",
+          "info": "t:sections.main-collection.blocks.tab.settings.collection.info"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "t:sections.main-collection.blocks.tab.settings.label.label",
+          "default": "All"
+        }
       ]
     },
     {
-      "type": "promo", "name": "Promo tile in grid", "limit": 1,
+      "type": "promo",
+      "name": "t:sections.main-collection.blocks.promo.name",
+      "limit": 1,
       "settings": [
-        { "type": "range", "id": "position", "label": "Show before product", "min": 2, "max": 12, "step": 1, "default": 4 },
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "kicker", "label": "Kicker", "default": "Our ingredient philosophy" },
-        { "type": "text", "id": "heading", "label": "Heading", "default": "Formulas that feel like a deep breath." },
-        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Intelligently chosen botanicals, modern actives, and a focus on skin comfort.</p>" },
-        { "type": "text", "id": "link_label", "label": "Link label", "default": "Meet the ingredients" },
-        { "type": "url", "id": "link", "label": "Link" },
-        { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-8" }
+        {
+          "type": "range",
+          "id": "position",
+          "label": "t:sections.main-collection.blocks.promo.settings.position.label",
+          "min": 2,
+          "max": 12,
+          "step": 1,
+          "default": 4
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.main-collection.blocks.promo.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "kicker",
+          "label": "t:sections.main-collection.blocks.promo.settings.kicker.label",
+          "default": "Our ingredient philosophy"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "t:sections.main-collection.blocks.promo.settings.heading.label",
+          "default": "Formulas that feel like a deep breath."
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.main-collection.blocks.promo.settings.text.label",
+          "default": "<p>Intelligently chosen botanicals, modern actives, and a focus on skin comfort.</p>"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "t:sections.main-collection.blocks.promo.settings.link_label.label",
+          "default": "Meet the ingredients"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.main-collection.blocks.promo.settings.link.label"
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "t:sections.main-collection.blocks.promo.settings.color_scheme.label",
+          "default": "scheme-8"
+        }
       ]
     }
   ]

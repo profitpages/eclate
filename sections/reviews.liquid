@@ -69,17 +69,52 @@
 
 {% schema %}
 {
-  "name": "Reviews",
+  "name": "t:sections.reviews.name",
   "class": "section-reviews",
-  "enabled_on": { "templates": ["product"] },
+  "enabled_on": {
+    "templates": [
+      "product"
+    ]
+  },
   "settings": [
-    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Loved in real life" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Soft skin, loud praise." },
-    { "type": "color_scheme", "id": "summary_scheme", "label": "Summary card color scheme", "default": "scheme-4" },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Section color scheme", "default": "scheme-2" },
-    { "type": "paragraph", "content": "Shows the reviews you publish in Profit Pages → Reviews. With another reviews app, add its block here instead. The rating summary reads the reviews metafields both write." }
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "t:sections.reviews.settings.kicker.label",
+      "default": "Loved in real life"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.reviews.settings.heading.label",
+      "default": "Soft skin, loud praise."
+    },
+    {
+      "type": "color_scheme",
+      "id": "summary_scheme",
+      "label": "t:sections.reviews.settings.summary_scheme.label",
+      "default": "scheme-4"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.reviews.settings.color_scheme.label",
+      "default": "scheme-2"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.reviews.settings.paragraph__5.content"
+    }
   ],
-  "blocks": [{ "type": "@app" }],
-  "presets": [{ "name": "Reviews" }]
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.reviews.presets.presets__1.name"
+    }
+  ]
 }
 {% endschema %}

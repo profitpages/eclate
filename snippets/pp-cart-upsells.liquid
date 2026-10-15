@@ -125,7 +125,7 @@
           {%- assign pv = p.selected_or_first_available_variant -%}
           {%- unless in_cart or pv.available == false -%}
             <li class="pp-upsell">
-              <a class="pp-upsell__media" href="{{ p.url }}">{%- if p.featured_image -%}{{ p.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: p.featured_image.alt | escape }}{%- endif -%}</a>
+              <a class="pp-upsell__media" href="{{ p.url }}">{%- if p.featured_image -%}{{ p.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: p.featured_image.alt }}{%- endif -%}</a>
               <span class="pp-upsell__info">
                 <a class="pp-upsell__title" href="{{ p.url }}">{{ p.title | escape }}</a>
                 <span class="pp-upsell__price">{{ pv.price | money }}</span>

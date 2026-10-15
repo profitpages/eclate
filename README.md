@@ -30,3 +30,21 @@ shopify theme push --store <store>.myshopify.com --theme <id> --only sections/he
 ## Release zip
 Zip `assets config layout locales sections snippets templates` with forward-slash paths. Leave out
 `templates/index.sections-demo.json` (QA only).
+
+## Keeping in step with the store builder
+
+The store builder's copy (`store-builder/themes/eclate/src`) is the live version. It has these, applied there:
+- the hardening passes
+- the theme editor in nine languages (`t:` keys, `locales/*.schema.json`)
+- the add-ons kits in `scripts/theme-addons`, including the product-information blocks: Emoji benefits, Urgency text, Clickable discount, Shipping checkpoints and Quantity selector
+
+This repo was synced from that copy on 2026-10-15.
+
+After changing files here:
+1. Commit, then import the theme: `node scripts/import-theme.mjs eclate ../eclate-beauty-theme`
+2. Key and translate any new editor labels:
+   - `node scripts/theme-schema-i18n.mjs eclate`
+   - `railway run node scripts/i18n-translate.mjs schema`
+3. Copy `themes/eclate/src` back here, so the two stay identical.
+
+Never import an older checkout of this repo: it would undo the fixes made in the app.

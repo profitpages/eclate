@@ -21,7 +21,9 @@
     "skip_to_content": "Skip to content",
     "tagged_with": "Tagged \"{{ tags }}\"",
     "view_all_of": "All {{ title }}",
-    "wishlist": "Wishlist"
+    "wishlist": "Wishlist",
+    "image_placeholder": "Image placeholder",
+    "product_details": "Product details"
   },
   "products": {
     "add_title": "Add {{ title }} to bag",
@@ -278,6 +280,7 @@
     "reward_all": "You've unlocked every reward.",
     "timer_default": "Your bag is reserved for {{ time }}",
     "upsells_heading": "Pairs beautifully with",
-    "payment_methods": "Payment methods we accept"
+    "payment_methods": "Payment methods we accept",
+    "qb_save": "Save {{ amount }}"
   }
 }

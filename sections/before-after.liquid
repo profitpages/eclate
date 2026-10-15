@@ -31,27 +31,104 @@
 
 {% schema %}
 {
-  "name": "Before / after",
+  "name": "t:sections.before-after.name",
   "class": "section-before-after",
   "settings": [
-    { "type": "image_picker", "id": "before", "label": "Before image" },
-    { "type": "image_picker", "id": "after", "label": "After image", "info": "Use images of the same size and framing." },
-    { "type": "text", "id": "before_label", "label": "Before label", "default": "Day 1" },
-    { "type": "text", "id": "after_label", "label": "After label", "default": "Week 4" },
-    { "type": "range", "id": "start", "label": "Starting position", "min": 10, "max": 90, "step": 5, "unit": "%", "default": 50 },
-    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Real results" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Four weeks of luminous." },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Drag to see how skin looked before and after a month of the ritual.</p>" },
-    { "type": "text", "id": "disclaimer", "label": "Disclaimer", "default": "Unretouched images. Individual results vary." },
-    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop the ritual" },
-    { "type": "url", "id": "button_link", "label": "Button link" },
     {
-      "type": "select", "id": "layout", "label": "Layout",
-      "options": [{ "value": "side", "label": "Text beside slider" }, { "value": "stacked", "label": "Text above slider" }],
+      "type": "image_picker",
+      "id": "before",
+      "label": "t:sections.before-after.settings.before.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "after",
+      "label": "t:sections.before-after.settings.after.label",
+      "info": "t:sections.before-after.settings.after.info"
+    },
+    {
+      "type": "text",
+      "id": "before_label",
+      "label": "t:sections.before-after.settings.before_label.label",
+      "default": "Day 1"
+    },
+    {
+      "type": "text",
+      "id": "after_label",
+      "label": "t:sections.before-after.settings.after_label.label",
+      "default": "Week 4"
+    },
+    {
+      "type": "range",
+      "id": "start",
+      "label": "t:sections.before-after.settings.start.label",
+      "min": 10,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "t:sections.before-after.settings.kicker.label",
+      "default": "Real results"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.before-after.settings.heading.label",
+      "default": "Four weeks of luminous."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.before-after.settings.text.label",
+      "default": "<p>Drag to see how skin looked before and after a month of the ritual.</p>"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "t:sections.before-after.settings.disclaimer.label",
+      "default": "Unretouched images. Individual results vary."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.before-after.settings.button_label.label",
+      "default": "Shop the ritual"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.before-after.settings.button_link.label"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "t:sections.before-after.settings.layout.label",
+      "options": [
+        {
+          "value": "side",
+          "label": "t:sections.before-after.settings.layout.options__1.label"
+        },
+        {
+          "value": "stacked",
+          "label": "t:sections.before-after.settings.layout.options__2.label"
+        }
+      ],
       "default": "side"
     },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.before-after.settings.color_scheme.label",
+      "default": "scheme-2"
+    }
   ],
-  "presets": [{ "name": "Before / after" }]
+  "presets": [
+    {
+      "name": "t:sections.before-after.presets.presets__1.name"
+    }
+  ]
 }
 {% endschema %}
